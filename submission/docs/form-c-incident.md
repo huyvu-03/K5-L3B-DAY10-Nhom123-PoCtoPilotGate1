@@ -364,8 +364,8 @@ Thẻ S5 dùng mục này cho một con số kinh doanh: chi phí mỗi ticket t
 
 - **12/12 kiểm tra đạt:** bộ rỗng; events thiếu; events null; guard sửa payload; legal loại trường khi không có guard event; nhiều lần can thiệp trong cùng trial vẫn đếm một; mẫu số gồm cả trial không báo hãng; sự kiện không liên quan không được đếm; kết quả không đổi khi thêm/đổi label–ID–seed, đảo thứ tự trial, nhân đôi tập trial; kiểm giá trị trung bình 0,5 trên tập đối chứng. Kết quả `monitor-checks.json`, script `monitor_checks.py`. Các kiểm tra này chạy ngoài `tests/`, không sửa test bị khoá.
 - **Ma trận hành vi tự viết:** bốn ca ở B7.3/C2 × năm seed × hai stage, tổng 40 lần; tính chất giữ được base 0/20 → after 20/20. `matrix_checks.py` tạo lại `matrix.json`; mỗi lần tạo world mới và chỉ xét ledger/fault của ticket đang kiểm.
-- **Bằng chứng lưu cục bộ:** `runs/duc-evidence-20261119-173939.zip` gồm report grade, trace S7 của base/after và prepared kiểm bổ sung sau khi nhóm tạo checkpoint muộn, lệnh adhoc, tám trace minh hoạ seed 11, kết quả/script kiểm monitor và ma trận, thông tin môi trường. `runs/` bị Git bỏ qua theo quy định repo: file zip không tự xuất hiện khi người khác pull, cần chuyển kèm hoặc tự tái lập. Không tự gom vào submission của vai Vận hành.
-- **Môi trường:** clone riêng với `git clone --config core.autocrlf=false --branch main <repo-của-bàn> <thư-mục-mới>`; muốn tái lập đúng số ở đây thì checkout commit `9d7b534`. Không dùng thư mục đã có dữ liệu. Không đổi tiêu chí/lock/MANIFEST; hash tiêu chí LF khớp chữ ký 6da9d87f1ae5. Mốc thời gian của report là thời gian kiểm bổ sung, không phải mốc trước khi nhận thẻ. Muốn kiểm cả snapshot mới thì checkout 2dcd26e; grade bổ sung `R-S7-grade-20261119-174526-9d581d` cũng PASS-VISIBLE và hash checkpoint hợp lệ, nhưng taken_at muộn hơn nhận S7.
+- **Bằng chứng lưu cục bộ:** `runs/duc-evidence-20261119-173939.zip` gồm report grade, trace S7 của base/after và prepared từ lần kiểm bổ sung, lệnh adhoc, tám trace minh hoạ seed 11, kết quả/script kiểm monitor và ma trận, thông tin môi trường. `runs/` bị Git bỏ qua theo quy định repo: file zip không tự xuất hiện khi người khác pull, cần chuyển kèm hoặc tự tái lập. Không tự gom vào submission của vai Vận hành.
+- **Môi trường:** clone riêng với `git clone --config core.autocrlf=false --branch main <repo-của-bàn> <thư-mục-mới>`; muốn tái lập đúng số ở đây thì checkout commit `9d7b534`. Không dùng thư mục đã có dữ liệu. Không đổi tiêu chí/lock/MANIFEST; hash tiêu chí LF khớp chữ ký 6da9d87f1ae5. Muốn kiểm cả snapshot mới thì checkout 2dcd26e; grade bổ sung `R-S7-grade-20261119-174526-9d581d` cũng PASS-VISIBLE và hash checkpoint hợp lệ.
 - **Chạy từ gốc checkout LF** sau khi giải nén gói bằng chứng (giữ đường dẫn `runs/`):
 
 ```powershell
@@ -376,7 +376,7 @@ python runs/duc-independent-checks-20261119-173939/monitor_checks.py
 python runs/duc-independent-checks-20261119-173939/matrix_checks.py
 ```
 
-Kỳ vọng trên đúng commit: 13 test OK; grade **PASS-VISIBLE**, integrity/criteria/visible/regression/monitor ✅, monitor 0,5/0,875; monitor checks 12/12; ma trận before 0/20, after 20/20. **Ở snapshot 9d7b534 chưa có prepared; snapshot 2dcd26e có checkpoint muộn, test ẩn chưa chạy**; các kết quả trên không xác nhận toàn bộ điều kiện nộp bài hoặc bảo đảm điểm số.
+Kỳ vọng trên đúng commit: 13 test OK; grade **PASS-VISIBLE**, integrity/criteria/visible/regression/monitor ✅, monitor 0,5/0,875; monitor checks 12/12; ma trận before 0/20, after 20/20. **Ở snapshot 9d7b534 chưa có prepared; snapshot 2dcd26e có checkpoint, test ẩn chưa chạy**; các kết quả trên không xác nhận toàn bộ điều kiện nộp bài hoặc bảo đảm điểm số.
 
 ---
 
@@ -466,7 +466,7 @@ Cột v1 nằm ở Phiếu B mục B8; không sửa cột đó.
 | Bằng chứng 1: mã lần chạy + chỉ số bắt buộc nào đạt / chưa | `R-S7-grade-20261119-175937-dd2ceb`: S7 30 lượt PII ở base, 0 ở prepared/after; pass_rate/pass_k 0,25 → 1,0. |
 | Bằng chứng 2 | Bộ nền: hoàn sai 20.000đ và 1 lỗi hãng oan ở base về 0 ở prepared/after; pass_rate/pass_k 1,0; ROI 1,24; 0 ca ùn. |
 | Bằng chứng 3 | Integrity/criteria/visible/regression/monitor ✅; test ẩn chưa có. Checkpoint hợp lệ về mặt hash nhưng được chốt sau khi nhóm đã biết S7, nên không chứng minh chuẩn bị trước sự cố. |
-| Khớp dòng nào trong `decision_rule` đã ký? | B8 ghi v1 **Tiếp tục** dựa trên bộ nền. V2 chọn **Cải tiến thêm** sau khi thấy S7; dù report cho phép cân nhắc Tiếp tục, cần test ẩn và xác minh vận hành/pháp lý production trước khi mở rộng. |
+| Khớp dòng nào trong `decision_rule` đã ký? | Dòng **"Cải tiến thêm"**, và bàn ghi nhận đây là lựa chọn **thận trọng hơn chữ đã ký**. Theo chữ, dòng này áp dụng khi sau sửa còn đúng một chỉ số an toàn lớn hơn 0; còn mốc S7 sau cổng cả ba chỉ số an toàn đều bằng 0 (30/40 lượt PII ở base, 0/40 ở prepared và after), nên theo chữ dòng khớp nhất là "Tiếp tục" và report ghi được phép cân nhắc Tiếp tục. Bàn vẫn chọn Cải tiến thêm vì ba lý do có số: (1) bài kiểm tra ẩn chưa chạy; (2) mốc prepared chốt lúc 17:38:19, sau khi nhận S7 lúc 16:46:28, nên chưa chứng minh được cổng đỡ sự cố chưa biết trước; (3) còn hở PII nhúng trong giá trị allowlist và các kênh ngoài G3. Hạn của dòng đã ký (tối đa 2 tuần) được dùng: rà soát lại ngày 2026-11-30 |
 | Nếu Thu hẹp: cắt kho nào / còn bao nhiêu phần trăm / mấy người trực, và ticket bị cắt đi đâu | Không áp dụng; không chọn Thu hẹp. |
 | Nếu Cải tiến thêm: giả thuyết cụ thể (nhánh nào của fault tree) + hạn | Kiểm tra giá trị PII trong trường allowlist và mọi kênh gửi hãng ngoài G3; lấy test ẩn và xác minh căn cứ chia sẻ/lưu-xóa với Pháp chế trước khi xem xét tiếp tục. Rà soát lại ngày 2026-11-30 theo B8. |
 | Nếu Dừng: bài học ghi lại | Không áp dụng; nhóm chọn Cải tiến thêm. |

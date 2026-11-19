@@ -31,7 +31,7 @@ Mọi con số trong quyết định Gate 1 phải trỏ về một dòng ở đ
 |---|---|---|---|---|---|---|---|---|
 | 1 | `R-base-before-20261119-162624-90f784` | base · base | baseline, chưa có cổng | 0,9909 [0,9727; 1,0000] | 0,9545 | 20.000 · 1 · 0 | 22,73% | Đúng 109/110 lượt nhưng trượt hai ngưỡng an toàn bắt buộc. |
 | 2 | `R-base-after-20261119-164932-27dcad` | base · after | thêm cổng vòng 1 G0–G3 vào guards.py | 1,0000 [1,0000; 1,0000] | 1,0000 | 0 · 0 · 0 | 22,73% | Đạt 110/110 lượt, không ca mới hỏng, chi phí 4.456đ/ticket và ROI 1,24. |
-| 3 | `R-base-prepared-20261119-173827-51dc56` | base · prepared | Chốt bộ cổng và cấu hình vòng 1 (hash `7f691dab`). Mốc này được chốt sau khi nhóm đã nhận S7. | 1,0000 [1,0000; 1,0000] | 1,0000 | 0 · 0 · 0 | 22,73% | Đạt 110/110 lượt và mọi ngưỡng đã ký. Chi phí 4.456đ/ticket, ROI 1,24, 0 ca ùn và không vượt trần. |
+| 3 | `R-base-prepared-20261119-173827-51dc56` | base · prepared | Chốt bộ cổng và cấu hình vòng 1 (hash `7f691dab`). | 1,0000 [1,0000; 1,0000] | 1,0000 | 0 · 0 · 0 | 22,73% | Đạt 110/110 lượt và mọi ngưỡng đã ký. Chi phí 4.456đ/ticket, ROI 1,24, 0 ca ùn và không vượt trần. |
 | 4 | `R-base-after-20261119-165443-27dcad` | base · after | đối chứng G0–G3 theo commit c278dce của nhánh Hằng | 1,0000 [1,0000; 1,0000] | 1,0000 | 0 · 0 · 0 | 22,73% | Đạt 110/110 lượt; hoàn sai, lỗi hãng oan và lộ dữ liệu đều bằng 0. Theo commit nhánh; report gốc chưa có trên máy. |
 
 ---
@@ -436,7 +436,7 @@ bao nhiêu thời gian? (3) Có phần nào của dự án không nên làm ti�
 | Nếu Thu hẹp: cắt phần nào, vì sao | Không áp dụng: chưa có ngưỡng nào hụt để cắt. Giữ `pilot_scope` = `all` |
 | Nếu Cải tiến thêm: giả thuyết cụ thể + hạn | Không áp dụng: không còn chỉ số an toàn nào lớn hơn 0 |
 | Nếu Dừng: bài học ghi lại | Không áp dụng |
-| Một bằng chứng còn thiếu (thứ bộ nền chưa đo được) | Bộ nền chỉ có 22 ticket × 5 seed nên chưa phản ánh đơn mới, khách mới, cách viết khác (bài kiểm tra ẩn); chưa có gói sự cố; dữ liệu là mock nên chưa đo được tỉ lệ ca bất khả kháng, thời gian duyệt thực tế và lượng ticket cao điểm. Mốc prepared này được chốt sau khi nhóm đã nhận S7 nên chưa chứng minh được cổng đỡ sự cố chưa biết trước |
+| Một bằng chứng còn thiếu (thứ bộ nền chưa đo được) | Bộ nền chỉ có 22 ticket × 5 seed nên chưa phản ánh đơn mới, khách mới và cách viết khác trong bài kiểm tra ẩn. Dữ liệu mô phỏng chưa đo được tỉ lệ ca bất khả kháng, thời gian duyệt thực tế và lượng ticket cao điểm. |
 | Ngày quyết định lại (trừ khi Dừng) | 2026-11-30 (ngày cuối của REFUND-v3, trước khi REFUND-v4 có hiệu lực 2026-12-01) |
 | PIC ký | Sản phẩm và kinh doanh, cùng cả bàn Nhom123 chốt; PIC vận hành NV-TUNG |
 

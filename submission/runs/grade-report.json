@@ -1,8 +1,8 @@
 {
- "run_id": "R-S7-grade-20261119-175937-dd2ceb",
+ "run_id": "R-S7-grade-20261119-203041-51dc56",
  "incident": "S7",
  "grader_version": "lab10-1.0",
- "code_hash": "dd2ceb10909924cf9f0ebd98a012b7358dfa28b731a8d5fa87887d4e7da7d205",
+ "code_hash": "51dc567b24776843968237c25b592fb3fb26c267da003480c1fa36ec38932758",
  "integrity": {
   "ok": true,
   "changed": [],
@@ -1273,9 +1273,9 @@
   }
  },
  "run_ids": {
-  "before": "R-S7-before-20261119-175938-dd2ceb",
-  "prepared": "R-S7-prepared-20261119-175938-dd2ceb",
-  "after": "R-S7-after-20261119-175939-dd2ceb"
+  "before": "R-S7-before-20261119-203041-51dc56",
+  "prepared": "R-S7-prepared-20261119-203041-51dc56",
+  "after": "R-S7-after-20261119-203041-51dc56"
  },
  "visible": {
   "before_red": true,
@@ -1333,5 +1333,5 @@
  "hard_gates_ok": true,
  "score": null,
  "verdict": "PASS-VISIBLE (chưa chạy test ẩn)",
- "seconds": 1.169
+ "seconds": 0.357
 }
