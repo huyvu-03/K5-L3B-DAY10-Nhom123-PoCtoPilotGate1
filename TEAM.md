@@ -75,6 +75,8 @@ TODO: mã commit ký tiêu chí, mã lần chạy (`runs/<mã>`), dòng trong ph
 TODO: một điều học được, một điều còn chưa chắc.
 ## VuQuangHuy-2A202603782
 
+Đã dùng AI để tổng hợp baseline, kết quả so ngưỡng và trace `T-002@55` vào Phiếu B, mục B0–B2.
+
 ### Phần việc phụ trách
 
 Vai: Kỹ sư cổng (chính).

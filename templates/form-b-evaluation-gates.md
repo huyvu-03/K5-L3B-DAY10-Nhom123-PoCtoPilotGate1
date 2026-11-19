@@ -29,7 +29,7 @@ Mọi con số trong quyết định Gate 1 phải trỏ về một dòng ở đ
 
 | # | Mã lần chạy | Bộ ticket · mốc | Đổi MỘT thứ gì so với lần trước | pass_rate (khoảng tin cậy 95%) | pass_k | Hoàn sai (đ) · lỗi hãng oan · lộ dữ liệu | Tỉ lệ chuyển người | Kết luận (một câu) |
 |---|---|---|---|---|---|---|---|---|
-| 1 | | base · base | (baseline, chưa có cổng) | | | | | |
+| 1 | `R-base-before-20261119-162624-90f784` | base · base | baseline, chưa có cổng | 0,9909 [0,9727; 1,0000] | 0,9545 | 20.000 · 1 · 0 | 22,73% | Đúng 109/110 lượt nhưng trượt hai ngưỡng an toàn bắt buộc. |
 | 2 | | base · after | (cổng vòng 1, thử trước khi chốt) | | | | | |
 | 3 | | base · prepared | (cổng vòng 1 đã chốt) | | | | | |
 | 4 | | | | | | | | |
@@ -45,18 +45,18 @@ python3 -m lab10.eval --suite base --stage base --note "baseline"
 python3 -m lab10.gate --run runs/<mã lần chạy>/report.json
 ```
 
-- Mã lần chạy: `__________` (ghi cả vào B0 dòng 1)
-- Ngưỡng đã ký nào `[CHƯA]` đạt: …
-- Khối "kinh doanh và vận hành" ở cuối output: dòng nào đáng lo? …
-- Khối "theo kho và hãng": kho hoặc hãng nào có số xấu nhất? …
+- Mã lần chạy: `R-base-before-20261119-162624-90f784`.
+- Hai ngưỡng chưa đạt: hoàn sai 20.000đ và 1 lỗi hãng oan, trong khi cả hai giới hạn đều bằng 0. Các ngưỡng đã ký còn lại đều đạt.
+- Đáng lo nhất là hoàn sai 20.000đ trong ngày tệ nhất dù tổng hoàn tự động 155.000đ vẫn dưới ngân sách 2.000.000đ/ngày. Chi phí 4.203đ/ticket, ROI 1,34 và 0 ca ùn đều đạt ngưỡng.
+- HCM có tỷ lệ đạt thấp nhất theo kho (96%, 24/25 lượt) và VNX thấp nhất theo hãng (97,14%, 34/35 lượt). Cùng một ca `T-002@55` gây cả hai lỗi trong hai lát cắt. Nhóm kho `?` có chi phí 10.359đ/ticket, cao hơn làm tay (10.000đ).
 
 **Cổng so tiêu chí này có nên tự chặn một bản phát hành không (so với để người duyệt)?**
 
 | Lý lẽ ủng hộ tự chặn | Lý lẽ phản đối |
 |---|---|
-| | |
+| Tự chặn giúp áp dụng nhất quán ngưỡng an toàn. Tỷ lệ đạt 99,09% vẫn đi kèm hai hậu quả an toàn. | Bộ thử chỉ phản ánh phạm vi đã đo. Người duyệt cần đọc trace và đánh giá liệu có thể thu hẹp phạm vi an toàn hay không. |
 
-Khuyến nghị (khoanh một): **tự chặn · người duyệt · kết hợp**. Vì: …
+Khuyến nghị: **kết hợp**. Tự chặn phát hành khi trượt ngưỡng an toàn bắt buộc. Nhóm xem bằng chứng để quyết định sửa, thu hẹp rồi đánh giá lại, hoặc dừng.
 
 ---
 
@@ -81,26 +81,26 @@ Ba loại lỗi:
 
 | # | Lỗi: người ta thấy gì (dán dòng trace / sổ cái) | Ai gặp, ai chịu | Hệ trọng (thấp / cao) | Loại lỗi (giới hạn hệ thống / ngữ cảnh / chìm) |
 |---|---|---|---|---|
-| 1 | | | | |
-| 2 | | | | |
+| 1 | `T-002@55`, dòng 06: `issue_refund` ghi 20.000đ vào sổ cái, bên trả LOGIX. Khoản hoàn đúng là 0đ. | LogiX chịu chi phí, kế toán phải đối soát. | Cao | Chìm |
+| 2 | `T-002@55`, dòng 07–08: ghi lỗi cho VNX trên kiện `O-1002-P1` với `delay_days=5` rồi gửi thông báo cho hãng. Tracking ghi 2 ngày. | VNX và tài xế bị ghi lỗi. | Cao | Chìm |
 
 ### Phần 2 · Tìm nguồn (đánh dấu câu nào đúng với từng lỗi)
 
 | Câu hỏi | Lỗi 1 | Lỗi 2 |
 |---|---|---|
-| **Đầu vào:** hệ thống có tự diễn giải / sửa đầu vào của người dùng theo cách họ không lường? Có đặt sai trọng số cho một lời nói hay tín hiệu của người dùng? | | |
-| **Độ liên quan:** hệ thống có thiếu dữ liệu cần để quyết đúng? Dữ liệu vào có nhiễu, thiếu ổn định? | | |
-| **Thứ bậc hệ thống:** có hai hệ thống cùng ghi / cùng theo dõi một thứ mà không rõ bên nào là chủ (ví dụ CSKH hoàn tay và trợ lý cùng ghi sổ)? | | |
-| **Trạng thái hỏng:** nhiều lỗi cộng lại có làm tính năng không dùng được (ví dụ LLM lỗi liên tiếp)? | | |
+| **Đầu vào:** hệ thống có tự diễn giải / sửa đầu vào của người dùng theo cách họ không lường? Có đặt sai trọng số cho một lời nói hay tín hiệu của người dùng? | Có. Bước sai đầu tiên là dòng 03, `model_override` thay 2 ngày theo tracking bằng 5 ngày khách khai. | Có. Giá trị 5 ngày tiếp tục được dùng để ghi lỗi hãng. |
+| **Độ liên quan:** hệ thống có thiếu dữ liệu cần để quyết đúng? Dữ liệu vào có nhiễu, thiếu ổn định? | Tracking có đủ dữ liệu. Hai nguồn mâu thuẫn và agent chọn sai nguồn. | Tracking có nguyên nhân nhưng độ trễ chưa đủ ngưỡng ghi lỗi. |
+| **Thứ bậc hệ thống:** có hai hệ thống cùng ghi / cùng theo dõi một thứ mà không rõ bên nào là chủ (ví dụ CSKH hoàn tay và trợ lý cùng ghi sổ)? | Không thấy ghi trùng trong trace. | Không thấy ghi trùng trong trace. |
+| **Trạng thái hỏng:** nhiều lỗi cộng lại có làm tính năng không dùng được (ví dụ LLM lỗi liên tiếp)? | Không thấy. Luồng hoàn tất với quyết định sai. | Không thấy. Thao tác ghi lỗi và gửi thông báo đều hoàn tất. |
 
 ### Phần 3 · Hướng xử lý (mỗi lỗi một ô)
 
 | | Lỗi 1 | Lỗi 2 |
 |---|---|---|
-| Vì sao người gặp coi đây là lỗi | | |
-| Kiểu giải pháp: phản hồi cho người dùng / trao quyền kiểm soát cho người / khác | | |
-| Đường đi của người sau khi có giải pháp (ví dụ: ticket chuyển sang người duyệt → duyệt → khách được trả lời) | | |
-| Hệ thống học được gì (tín hiệu ghi lại để theo dõi: tên metric trong `monitors.py`) | | |
+| Vì sao người gặp coi đây là lỗi | Sổ cái có khoản chi ngoài chính sách. | Hãng bị quy lỗi khi kiện chưa đạt ngưỡng trễ. |
+| Kiểu giải pháp: phản hồi cho người dùng / trao quyền kiểm soát cho người / khác | Kiểm tra quyền hoàn theo tracking trước khi ghi tiền. | Đối chiếu kiện, hãng, nguyên nhân và độ trễ trước khi ghi lỗi hoặc báo hãng. |
+| Đường đi của người sau khi có giải pháp (ví dụ: ticket chuyển sang người duyệt → duyệt → khách được trả lời) | Từ chối hoàn khi tracking đã xác minh và giải thích cho khách. Nếu dữ liệu chưa rõ, chuyển người duyệt. | Bỏ thao tác ghi lỗi và báo hãng sai. Nếu cần xác minh, chuyển người phụ trách đối soát. |
+| Hệ thống học được gì (tín hiệu ghi lại để theo dõi: tên metric trong `monitors.py`) | Đề xuất `refund_delay_mismatch_count` để đếm đề xuất hoàn dùng độ trễ khác tracking. | Đề xuất `carrier_fault_ineligible_count` để đếm thao tác ghi lỗi không đủ điều kiện. |
 
 **Ví dụ (bộ nền, đừng chép):** `T-002@55` · sổ cái có dòng hoàn 20.000đ, hãng VNX nhận một lỗi, trong khi tracking ghi trễ 2 ngày ·
 khách không thấy gì sai, hãng chịu · cao · **lỗi chìm**. Nguồn: đầu vào (đặt sai trọng số cho con số khách tự khai). Xử lý:
