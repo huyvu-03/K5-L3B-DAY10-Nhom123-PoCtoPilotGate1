@@ -5,7 +5,7 @@
 - Tên nhóm : Nhom123
 - Lớp: `L3B`
 - Repo của bàn: `K5-L3B-DAY10-Nhom123-PoCtoPilotGate1`
-- Thẻ sự cố đã bốc (S1–S8):
+- Thẻ sự cố đã bốc (S1–S8): S7
 
 ## Thành viên
 
@@ -132,13 +132,16 @@ Vai: Vận hành và pháp lý (Người 4).
 
 - Hoàn thiện HAZOP vòng 1, checklist go-live 9 nhóm việc, Runbook phần 1–3 và mục Giờ cao điểm trong Phiếu B.
 - Điền cổng `operations` và `legal` trong `config/operating_gates.json` theo dữ liệu `ops_limits`, `ops_facts` và `staff` của bộ mock.
-- Điền `team` và danh sách thành viên trong `submission/submission.json`; để trống thẻ và quyết định vì nhóm chưa nhận thẻ/chưa có kết quả đánh giá.
-- Các mục sự cố ở Phiếu C, kênh trực thật và số liệu từ report vẫn chờ nhóm xác nhận/kiểm chứng.
+- Hoàn thiện B6 Vận hành/Pháp lý (commit `05d0a87`) và bổ sung phần S7 thuộc vai trò: C3.3, C4–C11; điền C12 theo report mới nhất.
+- Cập nhật `submission/submission.json` với thẻ S7, quyết định B8 v1 `Tiếp tục`, lựa chọn v2 `Cải tiến thêm` và ba dòng bằng chứng.
+- Chuẩn hóa line ending các file khóa về đúng byte LF đã commit để grade không báo lỗi giả trên Windows; không đổi nội dung code, tiêu chí hay lock.
+- Checkpoint `7f691dab` đã được nhóm đẩy lên main; thời điểm chốt 17:38:19 sau khi nhận S7 lúc 16:46:28, nên không chứng minh chuẩn bị trước sự cố. Test ẩn chưa có trên máy.
+- Kênh trực production, căn cứ chia sẻ dữ liệu và xử lý dữ liệu hãng lưu vẫn cần kiểm chứng; cần nhóm/Lab Coach xác nhận cách ghi nhận mốc v1 và checkpoint hồi cứu.
 
 ### Bằng chứng
 
-`config/operating_gates.json`; Phiếu B mục B4, B5, B7.5–B7.6; `submission/submission.json`. Public tests: `Ran 13 tests ... OK`. Chưa có mã commit/run: tiêu chí chưa có lock và chưa chạy eval.
+`config/operating_gates.json`; Phiếu B mục B4, B5, B6, B7.5–B7.6, B8; Phiếu C C3.3, C4–C12; `submission/submission.json`. Commit B6: `05d0a87`; checkpoint: `2dcd26e` (`7f691dab`); B8 v1: commit `6e2f3a7`. Grade S7: `R-S7-grade-20261119-175937-dd2ceb` (PASS-VISIBLE; integrity/criteria/visible/regression/monitor đạt, prepared hợp lệ nhưng sau khi nhận S7; test ẩn chưa có). Public tests: 13 tests, OK.
 
 ### Exit ticket
 
-Một điều học được, một điều còn chưa chắc.
+TODO: tự ghi một điều học được và một điều còn chưa chắc.

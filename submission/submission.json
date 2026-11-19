@@ -6,12 +6,12 @@
     "PhungVanThanhCao-2A202603741",
     "DoThiThuHang-2A202603840"
   ],
-  "incident": "",
-  "decision_v1": "",
-  "decision_v2": "",
+  "incident": "S7",
+  "decision_v1": "Tiếp tục",
+  "decision_v2": "Cải tiến thêm",
   "three_lines": {
-    "environment_assumption": "",
-    "reduce_or_prevent": "",
-    "measure_in_pilot": ""
+    "environment_assumption": "Thiết kế giả định mọi thông báo hãng đều đi qua notify_carrier và carrier_notice_fields luôn khớp hợp đồng hiện hành; allowlist hoặc tích hợp production có thể đổi hay lệch.",
+    "reduce_or_prevent": "G3 ngăn trường ngoài allowlist và các trường PII đã biết trên luồng notify_carrier hiện tại; chỉ giảm rủi ro tổng thể vì chưa chặn PII nhúng trong giá trị được phép hoặc ở kênh khác.",
+    "measure_in_pilot": "Trước Bước đánh giá 2, audit 100% payload gửi hãng theo schema/hợp đồng; đo trường trái phép và PII, xác minh lưu-xóa dữ liệu với hãng, đồng thời theo dõi chi phí và hàng chờ theo kho."
   }
 }
