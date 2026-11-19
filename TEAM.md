@@ -2,7 +2,7 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm (`TenNhom`, không dấu, không khoảng trắng): Nhom123
+- Tên nhóm : Nhom123
 - Lớp: `L3B`
 - Repo của bàn: `K5-L3B-DAY10-Nhom123-PoCtoPilotGate1`
 - Thẻ sự cố đã bốc (S1–S8):
@@ -16,7 +16,7 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; bàn 3 người th
 |   1 | Vũ Quang Huy | 2A202603782 | Kỹ sư cổng (chính) |             |
 |   2 | Nguyễn Minh Đức | 2A202603751 | Kỹ sư cổng (phụ) |             |
 |   3 | Phùng Văn Thanh Cao | 2A202603741 | Sản phẩm và kinh doanh |             |
-|   4 |           |      |     |             |
+|   4 | Đỗ Thị Thu Hằng | 2A202603840 | Vận hành và pháp lý |             |
 
 Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, khớp bảng trên.
 
@@ -96,4 +96,29 @@ TODO: ghi mã commit, mã lần chạy (`runs/<mã>`) và mục phiếu liên qu
 
 TODO: ghi một điều học được và một điều còn chưa chắc.
 
+## DoThiThuHang-2A202603840
 
+### Phần việc phụ trách
+
+Vai: Vận hành và pháp lý (Người 4).
+
+- Câu 2.4 (Phiếu B, mục B4): lập HAZOP vòng 1, gồm rủi ro kỹ thuật và ngoài kỹ thuật.
+- Câu 2.4 (Phiếu B, mục B5): hoàn thiện checklist go-live 9 nhóm việc, ghi bằng chứng và PIC có tên cho từng dòng.
+- Câu 2.10 (Phiếu B, mục B7.5–B7.6): điền các cổng `operations` và `legal` trong `config/operating_gates.json`; viết runbook phần 1–3 và mục Giờ cao điểm, bảo đảm số liệu khớp cấu hình.
+- Câu 3.1 và 3.7 (Phiếu C, mục C4, C10–C11): lập HAZOP theo thẻ sự cố, cập nhật risk register/checklist, viết runbook phần 4–5.
+- Gom và rà soát hồ sơ nộp trong `submission/`, gồm `submission/submission.json`; đối chiếu thành viên, thẻ, quyết định và ba dòng bắt buộc với các phiếu trước khi chạy lệnh thu bài.
+
+### Đóng góp cụ thể
+
+- Hoàn thiện HAZOP vòng 1, checklist go-live 9 nhóm việc, Runbook phần 1–3 và mục Giờ cao điểm trong Phiếu B.
+- Điền cổng `operations` và `legal` trong `config/operating_gates.json` theo dữ liệu `ops_limits`, `ops_facts` và `staff` của bộ mock.
+- Điền `team` và danh sách thành viên trong `submission/submission.json`; để trống thẻ và quyết định vì nhóm chưa nhận thẻ/chưa có kết quả đánh giá.
+- Các mục sự cố ở Phiếu C, kênh trực thật và số liệu từ report vẫn chờ nhóm xác nhận/kiểm chứng.
+
+### Bằng chứng
+
+`config/operating_gates.json`; Phiếu B mục B4, B5, B7.5–B7.6; `submission/submission.json`. Public tests: `Ran 13 tests ... OK`. Chưa có mã commit/run: tiêu chí chưa có lock và chưa chạy eval.
+
+### Exit ticket
+
+Một điều học được, một điều còn chưa chắc.
