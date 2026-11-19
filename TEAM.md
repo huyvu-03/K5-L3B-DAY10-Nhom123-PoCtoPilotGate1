@@ -44,11 +44,17 @@ Vai: Kỹ sư cổng (phụ).
 - Trong phiên gộp nhánh, dùng Codex soát khác biệt và xử lý xung đột Phiếu B theo yêu cầu của Đức; giữ B3, B6 kỹ thuật, chẩn đoán S7 và bổ sung tham chiếu lần chạy từ nhánh Hằng.
 - Codex hỗ trợ điền các ô mô tả còn lại của C8 từ monitor/report hiện có; ngưỡng cảnh báo chưa chốt, để bàn quyết. Đức đã đọc và xác nhận nội dung Exit ticket trong cuộc trao đổi trước khi lưu.
 
+- Đợt tăng cường bằng chứng: Codex kiểm ở clone LF riêng, chạy 12 kiểm tra monitor và bốn ca tự viết × năm seed × hai stage; bổ sung B7.3, C2/C8, đề xuất cách theo dõi/PIC để bàn quyết. Không thay code cổng của Huy, không chốt prepared/v1/v2; chưa xác nhận Đức đã tự chạy hay tự giải thích các kiểm tra mới.
+
 ### Bằng chứng
 
 - Mốc đối chiếu: `895d3fd` ký tiêu chí; `372cbba` B7.2/B7.3 có sẵn; `3e0b325` nhận S7; `ce88646` G0–G3 của Huy. Đây là commit tham chiếu, không nhận là đóng góp mới của Đức.
 - T0: `R-base-after-20261119-170212-27dcad` (110/110); S7 base `R-S7-before-20261119-170213-27dcad`, after `R-S7-after-20261119-170214-27dcad` (PII 30 → 0); trace `S7-01@11`, `S7-04@11`, `S7-20@11`, `S7-21@11`, đối chứng `S7-05@11`.
-- Grade cuối sau đồng bộ business của thành viên khác (4838138): `R-S7-grade-20261119-170938-66af5e`: monitor ✅, bộ nền 0,5 vs S7 0,875; visible/regression ✅, integrity/criteria ❌ do CRLF; public tests Ran 13 tests ... OK. Phiếu B B6 KT1–KT7/B7.1; Phiếu C C0–C2/C8. Commit hoàn thiện phần kỹ thuật của Đức: `cf560cd`; commit gộp nhánh: `7158364`, `9d2b49d`.
+- Grade cũ trong checkout CRLF sau đồng bộ business của thành viên khác (4838138): `R-S7-grade-20261119-170938-66af5e`: monitor ✅, bộ nền 0,5 vs S7 0,875; visible/regression ✅, integrity/criteria ❌ do CRLF; public tests Ran 13 tests ... OK. Phiếu B B6 KT1–KT7/B7.1; Phiếu C C0–C2/C8. Commit hoàn thiện phần kỹ thuật của Đức: `cf560cd`; commit gộp nhánh: `7158364`, `9d2b49d`.
+
+- Kiểm định LF trên source 9d7b534: `R-S7-grade-20261119-173939-9d581d` **PASS-VISIBLE**, integrity/criteria/visible/regression/monitor đều ✅; 13 test OK; ma trận tự viết base 0/20 → after 20/20; 12/12 kiểm tra monitor đạt. Chi tiết và lệnh tái lập tại Phiếu C C8; gói `runs/duc-evidence-20261119-173939.zip` chỉ lưu cục bộ theo .gitignore, cần chuyển kèm hoặc tự chạy lại. Đây không phải prepared/test ẩn.
+
+- Đã đồng bộ checkpoint mới của nhóm tại 2dcd26e, xử lý xung đột do khác xuống dòng để giữ nguyên B0 prepared của Huy và chỉ thêm phụ lục kiểm thử của Đức. Grade LF bổ sung `R-S7-grade-20261119-174526-9d581d`: PASS-VISIBLE, checkpoint hash hợp lệ; taken_at 17:38:19 sau nhận S7 16:46:28 nên không nhận là bằng chứng chuẩn bị trước thẻ.
 
 ### Exit ticket
 
