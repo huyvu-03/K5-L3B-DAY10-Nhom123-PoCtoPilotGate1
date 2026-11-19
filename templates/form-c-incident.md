@@ -374,7 +374,7 @@ python runs/duc-independent-checks-20261119-173939/monitor_checks.py
 python runs/duc-independent-checks-20261119-173939/matrix_checks.py
 ```
 
-Kỳ vọng trên đúng commit: 13 test OK; grade **PASS-VISIBLE**, integrity/criteria/visible/regression/monitor ✅, monitor 0,5/0,875; monitor checks 12/12; ma trận before 0/20, after 20/20. **Ở snapshot 9d7b534 chưa có prepared; snapshot 2dcd26e có checkpoint muộn, test ẩn chưa chạy**; các kết quả trên không xác nhận toàn bộ điều kiện nộp bài hoặc bảo đảm điểm số. AI thực hiện phép kiểm và soạn bằng chứng; chưa coi đây là bằng chứng Đức tự giải thích được khi demo.
+Kỳ vọng trên đúng commit: 13 test OK; grade **PASS-VISIBLE**, integrity/criteria/visible/regression/monitor ✅, monitor 0,5/0,875; monitor checks 12/12; ma trận before 0/20, after 20/20. **Ở snapshot 9d7b534 chưa có prepared; snapshot 2dcd26e có checkpoint muộn, test ẩn chưa chạy**; các kết quả trên không xác nhận toàn bộ điều kiện nộp bài hoặc bảo đảm điểm số.
 
 ---
 
