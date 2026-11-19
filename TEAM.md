@@ -79,7 +79,7 @@ Vai: Sản phẩm và kinh doanh.
 - Phiếu A: câu 1.1, 1.5, 1.6 (mục A1, A3, A4, A5): câu tiêu chí "Nếu … thì chúng tôi sẽ …", hai câu ranh giới đầu ra, bốn câu soát, lý do cho `business_ops`, ngày xem lại 2026-11-30.
 - Phiếu B: B3 (câu 2.3, bản đồ dữ liệu và drift REFUND-v3 → v4 ngày 2026-12-01); B6 (hai dòng lăng kính kinh doanh); B7.4 và mục `business` trong `config/operating_gates.json` (trần hoàn 1.000.000đ/ngày, ngân sách 1.200đ/ticket, phạm vi `all`, ROI ≥ 0.5); B8 (quyết định v1 = Tiếp tục).
 - Phiếu C: câu 3.2 (mục C5, specification cho kênh gửi hãng, thẻ S7).
-- TODO: C6 (nhánh kinh doanh của fault tree), C7 nếu cần, C12 (quyết định v2 và ba dòng bắt buộc).
+- Phiếu C: đối chiếu C6 (fault tree) và C7 (bảng sửa) với phần kinh doanh. Thẻ S7 là sự cố lộ dữ liệu cá nhân (kỹ thuật, pháp lý, vận hành) nên không phải sửa mục `business` ở vòng 2: giữ nguyên trần hoàn 1.000.000đ/ngày, ngân sách 1.200đ/ticket, phạm vi `all`, ROI ≥ 0.5; C12 (quyết định v2) do cả nhóm điền, tôi rà soát cùng nhóm.
 - Dùng AI (Claude) để đọc `data/world.json`, `lab10/ops.py` và soạn nháp; mọi ngưỡng đã được bàn rà lại và tự giải thích được.
 
 ### Bằng chứng
@@ -91,7 +91,8 @@ Vai: Sản phẩm và kinh doanh.
 
 ### Exit ticket
 
-TODO: một điều học được, một điều còn chưa chắc.
+- **Điều học được:** ngưỡng chỉ có giá trị khi được đặt trước và niêm phong trước khi đo. Ký tiêu chí bằng hash buộc mọi quyết định sau đó phải khớp một dòng `decision_rule` đã viết sẵn, và mỗi con số kinh doanh (trần hoàn, ngân sách mỗi ticket, ROI) phải truy được về `ops_limits`/`ops_facts` chứ không đoán.
+- **Điều còn chưa chắc:** dữ liệu là mock nên chưa biết các ngưỡng 0,96, 0,86 và trần 1.000.000đ có hợp lý với lượng ticket thật hay không; và vì cổng vòng 1 được chốt sau khi nhóm đã nhận thẻ S7, tôi chưa chắc cổng đó thật sự đỡ được sự cố chưa biết trước.
 
 ## VuQuangHuy-2A202603782
 
