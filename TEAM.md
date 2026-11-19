@@ -107,15 +107,17 @@ Vai: Kỹ sư cổng (chính).
 
 ### Đóng góp cụ thể
 
-TODO: ghi việc đã làm, file đã sửa và các cổng đã viết.
+Chịu trách nhiệm chạy đánh giá mốc `base`, trace lỗi `T-002@55`, hoàn thiện chốt cổng vòng 1 và đối chiếu kết quả với tiêu chí đã ký. Đã sửa `lab10/guards.py` với G0 giữ phiên bản chính sách theo ngày, G1 kiểm quyền hoàn và phê duyệt, G2 kiểm lỗi hãng theo tracking DB, G3 giới hạn payload gửi hãng theo allowlist. Phối hợp Đức ở vòng 2 để duy trì các cổng và đối chứng S7 sau khi sự cố phát sinh.
 
 ### Bằng chứng
 
-TODO: ghi mã commit, mã lần chạy (`runs/<mã>`) và mục phiếu liên quan.
+Commit liên quan: `ce88646` G0–G3, `070b282` trần hoàn theo khách ở G1, `2dcd26e` checkpoint và `895d3fd` ký tiêu chí. Mã lần chạy: `R-base-before-20261119-162624-90f784`, `R-base-after-20261119-164932-27dcad`, `R-base-prepared-20261119-173827-51dc56`; trace `T-002@55`. Phiếu liên quan: A5, B0–B2, B7, B8 và C1–C12.
 
 ### Exit ticket
 
-TODO: ghi một điều học được và một điều còn chưa chắc.
+Một điều học được: Cổng ngoài model cần dùng tracking DB, chính sách hiệu lực, sổ cái và phê duyệt làm nguồn quyết định thay vì tin text trong ticket.
+
+Một điều còn chưa chắc: Allowlist hiện ngăn trường bị cấm trên luồng mock, nhưng cần thêm detector/chính sách kiểm chứng PII nhúng trong giá trị và mọi kênh tích hợp ngoài mock trước khi mở rộng production.
 
 ## DoThiThuHang-2A202603840
 
@@ -145,4 +147,6 @@ Vai: Vận hành và pháp lý (Người 4).
 
 ### Exit ticket
 
-TODO: tự ghi một điều học được và một điều còn chưa chắc.
+Một điều học được: Khi triển khai pilot, báo cáo PASS-VISIBLE không thay thế kiểm chứng vận hành, hợp đồng hãng, lưu-trữ/xóa dữ liệu và các kênh gửi ngoài luồng mock.
+
+Một điều còn chưa chắc: Cần coach hoặc đầu mối pháp lý xác nhận cách ghi nhận checkpoint v1 khi checkpoint được tạo sau thời điểm biết thẻ sự cố, để không diễn giải sai mốc phòng ngừa trước thẻ.
