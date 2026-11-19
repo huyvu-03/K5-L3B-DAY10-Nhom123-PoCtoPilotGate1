@@ -115,9 +115,8 @@ Commit liên quan: `ce88646` G0–G3, `070b282` trần hoàn theo khách ở G1,
 
 ### Exit ticket
 
-Một điều học được: Cổng ngoài model cần dùng tracking DB, chính sách hiệu lực, sổ cái và phê duyệt làm nguồn quyết định thay vì tin text trong ticket.
-
-Một điều còn chưa chắc: Allowlist hiện ngăn trường bị cấm trên luồng mock, nhưng cần thêm detector/chính sách kiểm chứng PII nhúng trong giá trị và mọi kênh tích hợp ngoài mock trước khi mở rộng production.
+- **Điều học được:** Cổng ngoài model cần dùng tracking DB, chính sách hiệu lực, sổ cái và phê duyệt làm nguồn quyết định thay vì tin text trong ticket.
+- **Điều còn chưa chắc:** Allowlist hiện ngăn trường bị cấm trên luồng mock, nhưng cần thêm detector/chính sách kiểm chứng PII nhúng trong giá trị và mọi kênh tích hợp ngoài mock trước khi mở rộng production.
 
 ## DoThiThuHang-2A202603840
 
@@ -147,6 +146,5 @@ Vai: Vận hành và pháp lý (Người 4).
 
 ### Exit ticket
 
-Một điều học được: Khi triển khai pilot, báo cáo PASS-VISIBLE không thay thế kiểm chứng vận hành, hợp đồng hãng, lưu-trữ/xóa dữ liệu và các kênh gửi ngoài luồng mock.
-
-Một điều còn chưa chắc: Cần coach hoặc đầu mối pháp lý xác nhận cách ghi nhận checkpoint v1 khi checkpoint được tạo sau thời điểm biết thẻ sự cố, để không diễn giải sai mốc phòng ngừa trước thẻ.
+- **Điều học được:** Khi triển khai pilot, báo cáo PASS-VISIBLE không thay thế kiểm chứng vận hành, hợp đồng hãng, lưu-trữ/xóa dữ liệu và các kênh gửi ngoài luồng mock.
+- **Điều còn chưa chắc:** Cần coach hoặc đầu mối pháp lý xác nhận cách ghi nhận checkpoint v1 khi checkpoint được tạo sau thời điểm biết thẻ sự cố, để không diễn giải sai mốc phòng ngừa trước thẻ.
