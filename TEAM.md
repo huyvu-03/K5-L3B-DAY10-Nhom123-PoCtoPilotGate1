@@ -41,6 +41,8 @@ Vai: Kỹ sư cổng (phụ).
 - Dùng Codex hỗ trợ T0–T2: đọc code G0–G3 của Huy, chạy test/eval/gate/trace, bổ sung hồi cứu B6 kỹ thuật và ánh xạ B7.1; ghi S7, C0, C1 phần kỹ thuật, C2. B7.2/B7.3 đã có sẵn; phiên này chạy lại ticket 2 để xác minh, không tự nhận là tác giả nội dung cũ.
 - Codex thêm carrier_payload_intervention_rate trong monitors.py, ghi ba ô C8 và kiểm grade; chẩn đoán lệch hash do CRLF chỉ bằng đọc/đổi trong bộ nhớ. Không sửa guards/config/file khoá, không checkpoint, không chốt quyết định thay bàn.
 
+- Trong phiên gộp nhánh, dùng Codex soát khác biệt và xử lý xung đột Phiếu B theo yêu cầu của Đức; giữ B3, B6 kỹ thuật, chẩn đoán S7 và bổ sung tham chiếu lần chạy từ nhánh Hằng.
+
 ### Bằng chứng
 
 - Mốc đối chiếu: `895d3fd` ký tiêu chí; `372cbba` B7.2/B7.3 có sẵn; `3e0b325` nhận S7; `ce88646` G0–G3 của Huy. Đây là commit tham chiếu, không nhận là đóng góp mới của Đức.

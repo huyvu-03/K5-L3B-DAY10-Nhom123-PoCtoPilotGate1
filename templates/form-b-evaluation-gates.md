@@ -32,7 +32,7 @@ Mọi con số trong quyết định Gate 1 phải trỏ về một dòng ở đ
 | 1 | `R-base-before-20261119-162624-90f784` | base · base | baseline, chưa có cổng | 0,9909 [0,9727; 1,0000] | 0,9545 | 20.000 · 1 · 0 | 22,73% | Đúng 109/110 lượt nhưng trượt hai ngưỡng an toàn bắt buộc. |
 | 2 | `R-base-after-20261119-164932-27dcad` | base · after | thêm cổng vòng 1 G0–G3 vào guards.py | 1,0000 [1,0000; 1,0000] | 1,0000 | 0 · 0 · 0 | 22,73% | Đạt 110/110 lượt, không ca mới hỏng, chi phí 4.456đ/ticket và ROI 1,24. |
 | 3 | | base · prepared | (cổng vòng 1 đã chốt) | | | | | |
-| 4 | | | | | | | | |
+| 4 | `R-base-after-20261119-165443-27dcad` | base · after | đối chứng G0–G3 theo commit c278dce của nhánh Hằng | 1,0000 [1,0000; 1,0000] | 1,0000 | 0 · 0 · 0 | 22,73% | Đạt 110/110 lượt; hoàn sai, lỗi hãng oan và lộ dữ liệu đều bằng 0. Theo commit nhánh; report gốc chưa có trên máy. |
 
 ---
 
