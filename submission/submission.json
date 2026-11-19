@@ -8,10 +8,10 @@
   ],
   "incident": "S7",
   "decision_v1": "Tiếp tục",
-  "decision_v2": "Cải tiến thêm",
+  "decision_v2": "Tiếp tục",
   "three_lines": {
-    "environment_assumption": "Thiết kế giả định mọi thông báo hãng đều đi qua notify_carrier và carrier_notice_fields luôn khớp hợp đồng hiện hành; allowlist hoặc tích hợp production có thể đổi hay lệch.",
-    "reduce_or_prevent": "G3 ngăn trường ngoài allowlist và các trường PII đã biết trên luồng notify_carrier hiện tại; chỉ giảm rủi ro tổng thể vì chưa chặn PII nhúng trong giá trị được phép hoặc ở kênh khác.",
-    "measure_in_pilot": "Trước Bước đánh giá 2, audit 100% payload gửi hãng theo schema/hợp đồng; đo trường trái phép và PII, xác minh lưu-xóa dữ liệu với hãng, đồng thời theo dõi chi phí và hàng chờ theo kho."
+    "environment_assumption": "Thiết kế giả định mọi thông báo hãng đều đi qua notify_carrier và carrier_notice_fields (4 trường: order_id, parcel_id, district, delay_days) luôn khớp hợp đồng hiện hành; allowlist hoặc tích hợp production có thể đổi hay lệch.",
+    "reduce_or_prevent": "G3 ngăn trường ngoài allowlist và các trường PII đã biết trên luồng notify_carrier hiện tại (S7: lộ PII 30/40 lượt ở base, 0/40 ở prepared và after); chỉ giảm rủi ro tổng thể vì chưa chặn PII nhúng trong giá trị được phép hoặc ở kênh khác.",
+    "measure_in_pilot": "Trước Bước đánh giá 2, audit 100% payload gửi hãng theo schema/hợp đồng; đo trường trái phép và PII (ngưỡng 0), xác minh lưu-xóa dữ liệu với hãng, đồng thời đo lại theo kho: chi phí mỗi ticket (mock 4.456đ, ngưỡng 7.000đ; kho ? 10.359đ so với làm tay 10.000đ), tổng hoàn tự động so với trần 1.000.000đ/ngày, và hàng chờ (1 người duyệt 6 ca/giờ, SLA 60 phút)."
   }
 }
