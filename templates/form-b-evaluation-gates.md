@@ -250,10 +250,10 @@ Bốn lăng kính (bắt buộc đủ cả bốn; dự án AI hay chết ở ba 
 | Lý do thất bại (viết ở thì quá khứ) | Lăng kính | Kiểm được hôm nay? (trace / data / config nào) | Thành cổng phòng ngừa nào (code hay config) / hay vào risk register |
 |---|---|---|---|
 | | Kỹ thuật | | |
-| | Kinh doanh | | |
+| Chi phí cố định của người trực được chia cho quá ít ticket nên mỗi ticket tốn gần bằng làm tay (10.000đ) và ROI âm; thêm người trực để hết ùn thì ROI tụt thêm, ban lãnh đạo tắt pilot | Kinh doanh | Được, sau khi có lần chạy base: khối "chi phí mỗi ticket" và "ROI" trong report; `ops_facts` (làm tay 10.000đ, người duyệt 10.000đ/ca, giữ chỗ 30.000đ/người/ca); bộ nền chỉ có HN 7 và HCM 5 ticket/ngày | **Cổng config** (đề xuất): `business.pilot_scope`, `business.roi_min` 0,5, `operations.reviewers_on_shift`; đã ký `business_ops.cost_per_ticket_vnd_max` 7000 và `queue_stuck_max` 0 |
 | | Con người và vận hành | | |
 | | Pháp lý | | |
-| | | | |
+| Một ngày cao điểm có nhiều khoản hoàn tự động chạm ngân sách Finance 2.000.000đ/ngày, hoặc một khách bị hoàn quá 300.000đ; Finance cắt ngân sách và phải đối soát bằng tay | Kinh doanh | Được: `ops_limits.daily_auto_refund_budget_vnd`, `max_auto_refund_per_customer_per_day_vnd`; dòng "tổng hoàn tự động" so với trần trong report; `ledger_seed` cho khoản đã hoàn trước | **Cổng config** (đề xuất): `business.daily_refund_cap_vnd` thấp hơn ngân sách Finance; khoản vượt trần chuyển NV-HANH (chạm cổng `write_gate` của Kỹ sư cổng) |
 
 ---
 
