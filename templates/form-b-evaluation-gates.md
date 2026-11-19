@@ -1,6 +1,6 @@
 # Phiếu B · Đo, rủi ro, cổng vòng 1 và quyết định v1 · Khối 2A + 2B + chốt (phút 65–115)
 
-**Bàn:** ______
+**Bàn:2 lớp E403** K5-L3B-DAY10-Nhom123-PoCtoPilotGate1
 
 Tiêu chí đã ký ở Phiếu A. Từ phút 65 bàn mới được chạy trợ lý. Khối 2A (65–85) chưa sửa code hay config. Khối 2B (85–105) sửa
 `lab10/guards.py` và `config/operating_gates.json`. Phút 105–115 chốt cổng vòng 1 rồi viết quyết định v1. Sau phút 115 không sửa phiếu này
@@ -412,27 +412,22 @@ bao nhiêu thời gian? (3) Có phần nào của dự án không nên làm ti�
 
 | | **v1** (phút 105–115, TRƯỚC khi nhận thẻ sự cố) |
 |---|---|
-| Commit ký tiêu chí (message `Sign acceptance criteria`; hash commit, tuỳ chọn) | |
-| Hash chốt cổng vòng 1 (8 ký tự lệnh `lab10.checkpoint` in ra, tuỳ chọn) | |
-| Mã lần chạy dùng làm bằng chứng | bộ nền, mốc base: ________ · bộ nền với cổng vòng 1 (prepared): ________ |
-| Còn dòng "vượt trần" nào trong report? (hàng chờ, chi phí, ROI, trần tiền, pháp lý) | |
-| Kho hoặc hãng có số xấu nhất: ____. Nếu chỉ nhìn phân khúc này, quyết định có đổi không? *(Đọc khối "theo kho và hãng" ở cuối output `lab10.eval` / `lab10.grade`, hoặc mục `by_segment` trong `report.json`.)* | |
-| Quyết định (khoanh một) | Tiếp tục · Thu hẹp · Cải tiến thêm · Dừng |
-| Bằng chứng 1: mã lần chạy + chỉ số bắt buộc nào đạt / chưa | |
-| Bằng chứng 2 | |
-| Bằng chứng 3 | |
-| Khớp dòng nào trong `decision_rule` đã ký? | |
-| Nếu Thu hẹp: cắt phần nào, vì sao | |
-| Nếu Cải tiến thêm: giả thuyết cụ thể + hạn | |
-| Nếu Dừng: bài học ghi lại | |
-| Một bằng chứng còn thiếu (thứ bộ nền chưa đo được) | |
-| Ngày quyết định lại (trừ khi Dừng) | |
-| PIC ký | |
+| Commit ký tiêu chí (message `Sign acceptance criteria`; hash commit, tuỳ chọn) | `895d3fd` (ký lúc 2026-11-19T16:19:56, trước lần `eval` đầu tiên lúc 16:26) |
+| Hash chốt cổng vòng 1 (8 ký tự lệnh `lab10.checkpoint` in ra, tuỳ chọn) | `7f691dab` (chốt lúc 2026-11-19T17:38:19) |
+| Mã lần chạy dùng làm bằng chứng | bộ nền, mốc base: `R-base-before-20261119-162624-90f784` · bộ nền với cổng vòng 1 (prepared): `R-base-prepared-20261119-173827-51dc56` |
+| Còn dòng "vượt trần" nào trong report? (hàng chờ, chi phí, ROI, trần tiền, pháp lý) | Không (theo B0 dòng 3: 0 ca ùn, 4.456đ/ticket < 7.000đ, ROI 1,24 > 0,5, hoàn sai · lỗi hãng oan · lộ dữ liệu đều 0). Mốc base trước đó có 2 ngưỡng an toàn chưa đạt (hoàn sai 20.000đ, 1 lỗi hãng oan) |
+| Kho hoặc hãng có số xấu nhất: **nhóm kho `?`** (ticket trỏ tới đơn không tồn tại) về chi phí, **HCM** và **VNX** về tỉ lệ đúng ở mốc base. Nếu chỉ nhìn phân khúc này, quyết định có đổi không? *(Đọc khối "theo kho và hãng" ở cuối output `lab10.eval` / `lab10.grade`, hoặc mục `by_segment` trong `report.json`.)* | Không đổi. Ở mốc base, HCM đúng 96% (24/25 lượt) và VNX 97,14% (34/35 lượt) đều do cùng một ca `T-002@55`; sau cổng vòng 1 cả hai về 100%. Nhóm kho `?` tốn 10.359đ/ticket ở mốc base (cao hơn làm tay 10.000đ) vì chỉ gồm vài ticket chuyển người; report không tính vào dòng vượt trần. *Số của nhóm `?` ở mốc prepared cần đối chiếu lại với khối "theo kho và hãng" trong output `gate`.* |
+| Quyết định (khoanh một) | **Tiếp tục** ✔ · Thu hẹp · Cải tiến thêm · Dừng |
+| Bằng chứng 1: mã lần chạy + chỉ số bắt buộc nào đạt / chưa | `R-base-prepared-20261119-173827-51dc56`: `pass_rate` 1,0000 ≥ 0,96, `pass_k` 1,0000 ≥ 0,86, hoàn sai 0đ, lỗi hãng oan 0, lộ dữ liệu 0: **cả 5 chỉ số bắt buộc đạt** |
+| Bằng chứng 2 | Cùng lần chạy: `business_ops` đạt (4.456đ/ticket ≤ 7.000đ, ROI 1,24 ≥ 0,5, 0 ca ùn ≤ 0) và `escalation_rate` 22,73% ≤ 0,35; report không có dòng "VƯỢT TRẦN" |
+| Bằng chứng 3 | So với `R-base-before-20261119-162624-90f784` (không cổng): hai ngưỡng an toàn từng trượt (hoàn sai 20.000đ, 1 lỗi hãng oan, đều từ `T-002@55`) nay về 0, không ca nào mới hỏng; cổng vòng 1 G0–G3 là nguyên nhân, không phải đổi tiêu chí (hash tiêu chí `6da9d87f` không đổi) |
+| Khớp dòng nào trong `decision_rule` đã ký? | Dòng **"Tiếp tục"**: mọi chỉ số bắt buộc và ngưỡng `business_ops` đạt trên bộ nền, không còn dòng vượt trần. Vế "gói sự cố" của dòng này chưa kiểm được ở v1 vì v1 viết trước khi có kết quả thẻ; vế đó được kiểm ở v2 |
+| Nếu Thu hẹp: cắt phần nào, vì sao | Không áp dụng: chưa có ngưỡng nào hụt để cắt. Giữ `pilot_scope` = `all` |
+| Nếu Cải tiến thêm: giả thuyết cụ thể + hạn | Không áp dụng: không còn chỉ số an toàn nào lớn hơn 0 |
+| Nếu Dừng: bài học ghi lại | Không áp dụng |
+| Một bằng chứng còn thiếu (thứ bộ nền chưa đo được) | Bộ nền chỉ có 22 ticket × 5 seed nên chưa phản ánh đơn mới, khách mới, cách viết khác (bài kiểm tra ẩn); chưa có gói sự cố; dữ liệu là mock nên chưa đo được tỉ lệ ca bất khả kháng, thời gian duyệt thực tế và lượng ticket cao điểm. Mốc prepared này được chốt sau khi nhóm đã nhận S7 nên chưa chứng minh được cổng đỡ sự cố chưa biết trước |
+| Ngày quyết định lại (trừ khi Dừng) | 2026-11-30 (ngày cuối của REFUND-v3, trước khi REFUND-v4 có hiệu lực 2026-12-01) |
+| PIC ký | Sản phẩm và kinh doanh, cùng cả bàn Nhom123 chốt; PIC vận hành NV-TUNG |
 
-Xong v1 thì lưu và đẩy một bản (sau mốc này không sửa cột v1):
 
-```bash
-git add lab10/guards.py lab10/guards_round1.py config/operating_gates.json config/operating_gates.round1.json config/round1.lock templates/form-b-evaluation-gates.md
-git commit -m "LAB 10: chốt cổng vòng 1, quyết định v1"
-git push -u origin main
-```
+
