@@ -24,8 +24,8 @@ rồi mới chạy đánh giá. Khối 1 không sửa code.
 
 ### Câu 1.2 · Mục tiêu nhìn từ hai người
 
-- Chị Oanh, kế toán đối soát (không dùng trợ lý, nhưng phải khớp sổ với hãng và shop mỗi tuần): …
-- Chị Hạnh, trưởng ca CSKH (phải duyệt những ca trợ lý chuyển sang): …
+- Chị Oanh, kế toán đối soát (không dùng trợ lý, nhưng phải khớp sổ với hãng và shop mỗi tuần): Cuối mỗi tuần, chị đối chiếu được từng khoản hoàn và từng lỗi ghi cho hãng/shop với đúng đơn, kiện, tracking và chính sách có hiệu lực; các khoản lệch được nhận diện để xử lý trước khi chốt đối soát, thay vì phải tự lần theo từng ticket.
+- Chị Hạnh, trưởng ca CSKH (phải duyệt những ca trợ lý chuyển sang): Chị chỉ nhận các ca cần quyết định có đủ dữ liệu đơn, tracking, chính sách và phê duyệt liên quan, kèm lý do trợ lý chuyển; chị có thể duyệt hoặc từ chối khoản vượt hạn mức trong SLA 60 phút và kiểm lại quyết định tự động theo mẫu, không phải rà lại toàn bộ ca từ đầu.
 
 ---
 
@@ -48,12 +48,12 @@ trợ lý có đang gây thiệt hại cho bên ngoài LogiX không; không có 
 
 | | Offline, cho MỘT bước (câu 1.3) | Telemetry production (câu 1.4) |
 |---|---|---|
-| **Bước / hành vi được đo** | | |
-| **Thước đo** (một câu, có đơn vị) | | |
-| **Dữ liệu** (lấy ở đâu, bao nhiêu, ai gán nhãn) | | |
-| **Cách tính** (công thức, mẫu số, cách xử lý ca thiếu dữ liệu) | | |
-| **Khung thời gian / ngưỡng báo động** | (không áp dụng) | |
-| **Điểm mù** (thước đo này KHÔNG thấy gì) | | |
+| **Bước / hành vi được đo** | Chọn phiên bản chính sách hoàn tiền. | Hai hành động gây ảnh hưởng ra ngoài LogiX: `file_carrier_fault` và `notify_carrier` |
+| **Thước đo** (một câu, có đơn vị) | Tỷ lệ (%) lượt chạy chọn đúng phiên bản chính sách có hiệu lực vào ngày đánh giá. | Tỉ lệ hành động hướng tới hãng có dấu hiệu vi phạm: số lần ghi lỗi không có căn cứ tracking/chính sách hoặc gửi payload có trường bị cấm/ngoài allowlist trên mỗi 1.000 lần ghi lỗi hoặc gửi hãng. |
+| **Dữ liệu** (lấy ở đâu, bao nhiêu, ai gán nhãn) | Sau khi nhóm ký tiêu chí và chạy baseline, lấy `policy_id` trong sự kiện `policy` từ trace dự kiến của 22 ticket × 5 seed. Kỹ sư cổng xác định mã chính sách chuẩn từ `policies` trong `data/world.json` bằng cách đối chiếu `as_of` với `effective_from` và `effective_to`. | Audit log production cho mọi lần gọi `file_carrier_fault`/`notify_carrier` (thời điểm, order/parcel, `delay_cause`, policy ID/version, trường trong payload); đối chiếu tracking và policy registry đang hiệu lực, cùng danh sách trường bị chặn/được phép trong `config/operating_gates.json`. Không cần nhãn người: kiểm tra theo quy tắc và bản ghi nguồn. |
+| **Cách tính** (công thức, mẫu số, cách xử lý ca thiếu dữ liệu) | Lấy số lượt có `policy_id` khớp mã chuẩn chia cho số lượt có sự kiện `policy`, rồi nhân 100. Sự kiện `policy` thiếu mã được tính là sai. Đếm riêng lượt có trace nhưng chưa ghi nhận sự kiện `policy` và lượt thiếu trace. Nếu mẫu số bằng 0, ghi không đủ dữ liệu. | Đếm riêng (a) lần `file_carrier_fault` mà cause thiếu hoặc không thuộc `fault_causes` của policy hiệu lực; (b) lần `notify_carrier` có trường bị cấm hoặc ngoài allowlist. Tỉ lệ = tổng số hành động bị gắn cờ / tổng số lần ghi lỗi + gửi hãng × 1.000; thiếu tracking, policy hoặc audit payload thì gắn cờ và báo động, không loại khỏi số liệu. |
+| **Khung thời gian / ngưỡng báo động** | (không áp dụng) | Theo dõi từng hành động liên tục; ngưỡng **0 lần bị gắn cờ**. Báo NV-TUNG ngay (mục tiêu trong 5 phút), tắt thao tác ghi liên quan trong tối đa 15 phút; tổng hợp mỗi ngày và rà soát hàng tuần với NV-OANH. |
+| **Điểm mù** (thước đo này KHÔNG thấy gì) | Chọn đúng phiên bản vẫn có thể áp dụng sai điều khoản hoặc tính sai số tiền hoàn. | Đây là tín hiệu phơi nhiễm/nguy cơ, không chứng minh đã có thiệt hại thực tế; không phát hiện nguồn tracking sai, PII được nhúng trong trường không nhận diện được, hoặc thiệt hại bên thứ ba không tạo ra audit log/đơn khiếu nại. |
 
 **Ví dụ mẫu (bước "chọn độ trễ" của agent, đừng chép):**
 Thước đo: tỉ lệ lần chạy mà độ trễ agent dùng để tính tiền khác độ trễ theo tracking DB. Dữ liệu: sự kiện `proposal.delay_days_used`
