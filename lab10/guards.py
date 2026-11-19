@@ -99,6 +99,30 @@ def write_gate(ctx, action):
             changes["payer"] = "LOGIX"          # khách không có quyền đẩy tiền sang shop
         if amount > policy["auto_limit_vnd"] and not _approval_ok(ctx, action.get("approval_id"), order, amount, ctx.as_of):
             return Verdict.escalate(f"khoản {amount}đ vượt hạn mức tự động {policy['auto_limit_vnd']}đ, chưa có phê duyệt hợp lệ")
+        customer_cap = ctx.tools.ops_limits().get("max_auto_refund_per_customer_per_day_vnd")
+        if customer_cap is not None:
+            # Match the host's simulated-day boundary: seed rows predate today.
+            today = ctx.tools.ledger_rows()[ctx.tools._w.seed_rows:]
+            customer_id = order["customer_id"]
+            customer_auto_total = sum(
+                row["amount_vnd"] for row in today
+                if row.get("customer_id") == customer_id and not row.get("approval_id")
+            )
+            approval_id = action.get("approval_id")
+            approver_id = (ctx.gates or {}).get("operations", {}).get("approver_id") or "NV-HANH"
+            approved = bool(
+                _approval_ok(ctx, approval_id, order, amount, ctx.as_of)
+                and ctx.tools.lookup_approvals(approval_id=approval_id, approver_id=approver_id)
+            )
+            if not approved:
+                if customer_auto_total + amount > customer_cap:
+                    return Verdict.escalate(
+                        f"tổng hoàn tự động cho khách trong ngày sẽ vượt {customer_cap}đ, cần người duyệt"
+                    )
+                if amount > policy["auto_limit_vnd"]:
+                    return Verdict.escalate("khoản hoàn vượt hạn mức tự động và thiếu phê duyệt đúng người")
+                if approval_id:
+                    changes["approval_id"] = None
         if changes:
             return Verdict.modify("đưa khoản hoàn về đúng quyền lợi theo tracking DB và chính sách hiệu lực", **changes)
         return Verdict.allow()
