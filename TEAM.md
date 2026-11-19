@@ -15,7 +15,7 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; bàn 3 người th
 | --: | --------- | ---- | --- | :---------: |
 |   1 |           |      |     |             |
 |   2 | Nguyễn Minh Đức | 2A202603751 | Kỹ sư cổng (phụ) |             |
-|   3 |           |      |     |             |
+|   3 | Phùng Văn Thanh Cao | 2A202603741 | Sản phẩm và kinh doanh |             |
 |   4 |           |      |     |             |
 
 Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, khớp bảng trên.
@@ -42,6 +42,30 @@ TODO: điền sau khi làm xong (việc đã làm, file đã sửa, cổng đã 
 ### Bằng chứng
 
 TODO: mã commit, mã lần chạy (`runs/<mã>`), dòng trong phiếu.
+
+### Exit ticket
+
+TODO: một điều học được, một điều còn chưa chắc.
+
+## PhungVanThanhCao-2A202603741
+
+### Phần việc phụ trách
+
+Vai: Sản phẩm và kinh doanh.
+
+- Câu 1.1, 1.6 (Phiếu A, mục A1, A4, A5): mục tiêu cấp hệ thống, Bản tiêu chí "Nếu … thì chúng tôi sẽ …", bốn câu soát, hai câu ranh giới đầu ra; ký tiêu chí cùng trưởng nhóm.
+- Câu 2.3 (Phiếu B, mục B3): bản đồ dữ liệu và một ví dụ drift.
+- Câu 2.9 (Phiếu B, mục B7.4): đặt cổng kinh doanh trong `business` (`daily_refund_cap_vnd`, `cost_budget_per_ticket_vnd`, `pilot_scope`, `roi_min`), mỗi số kèm một câu lý do.
+- Quyết định Gate 1 v1 (Phiếu B, mục B8) và v2 (Phiếu C, mục C12, ba dòng bắt buộc); câu 3.2 (Phiếu C, mục C5: specification).
+- File: `config/acceptance_criteria.json`, `config/operating_gates.json` (mục `business`).
+
+### Đóng góp cụ thể
+
+TODO: điền sau khi làm xong (việc đã làm, file đã sửa, ngưỡng và con số đã chọn).
+
+### Bằng chứng
+
+TODO: mã commit ký tiêu chí, mã lần chạy (`runs/<mã>`), dòng trong phiếu.
 
 ### Exit ticket
 
