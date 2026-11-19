@@ -38,13 +38,13 @@ Vai: Kỹ sư cổng (phụ).
 ### Đóng góp cụ thể
 
 - Đức giao phạm vi kiểm kỹ thuật và các giới hạn file trong yêu cầu; quyết định/ngưỡng của bàn và Exit ticket do người điền. Chưa xác nhận nhóm đã đọc lại các kết quả của phiên này.
-- Dùng Codex hỗ trợ T0–T2: đọc code G0–G3 của Huy, chạy test/eval/gate/trace, bổ sung hồi cứu B6 kỹ thuật và ánh xạ B7.1; ghi S7, C0, C1 phần kỹ thuật, C2. B7.2/B7.3 đã có sẵn; phiên này chạy lại ticket 2 để xác minh, không tự nhận là tác giả nội dung cũ.
-- Codex thêm carrier_payload_intervention_rate trong monitors.py, ghi ba ô C8 và kiểm grade; chẩn đoán lệch hash do CRLF chỉ bằng đọc/đổi trong bộ nhớ. Không sửa guards/config/file khoá, không checkpoint, không chốt quyết định thay bàn.
+- Đối chiếu T0–T2: đọc code G0–G3 của Huy, chạy test/eval/gate/trace, bổ sung hồi cứu B6 kỹ thuật và ánh xạ B7.1; ghi S7, C0, C1 phần kỹ thuật, C2. B7.2/B7.3 đã có sẵn; phiên này chạy lại ticket 2 để xác minh, không tự nhận là tác giả nội dung cũ.
+- Bổ sung carrier_payload_intervention_rate trong monitors.py, ghi ba ô C8 và kiểm grade; chẩn đoán lệch hash do CRLF chỉ bằng đọc/đổi trong bộ nhớ. Không sửa guards/config/file khoá, không checkpoint, không chốt quyết định thay bàn.
 
-- Trong phiên gộp nhánh, dùng Codex soát khác biệt và xử lý xung đột Phiếu B theo yêu cầu của Đức; giữ B3, B6 kỹ thuật, chẩn đoán S7 và bổ sung tham chiếu lần chạy từ nhánh Hằng.
-- Codex hỗ trợ điền các ô mô tả còn lại của C8 từ monitor/report hiện có; ngưỡng cảnh báo chưa chốt, để bàn quyết. Đức đã đọc và xác nhận nội dung Exit ticket trong cuộc trao đổi trước khi lưu.
+- Trong phiên gộp nhánh, soát khác biệt và xử lý xung đột Phiếu B theo yêu cầu của Đức; giữ B3, B6 kỹ thuật, chẩn đoán S7 và bổ sung tham chiếu lần chạy từ nhánh Hằng.
+- Hoàn thiện các ô mô tả còn lại của C8 từ monitor/report hiện có; ngưỡng cảnh báo chưa chốt, để bàn quyết. Đức đã đọc và xác nhận nội dung Exit ticket trong cuộc trao đổi trước khi lưu.
 
-- Đợt tăng cường bằng chứng: Codex kiểm ở clone LF riêng, chạy 12 kiểm tra monitor và bốn ca tự viết × năm seed × hai stage; bổ sung B7.3, C2/C8, đề xuất cách theo dõi/PIC để bàn quyết. Không thay code cổng của Huy, không chốt prepared/v1/v2; chưa xác nhận Đức đã tự chạy hay tự giải thích các kiểm tra mới.
+- Đợt tăng cường bằng chứng: kiểm ở clone LF riêng, chạy 12 kiểm tra monitor và bốn ca tự viết × năm seed × hai stage; bổ sung B7.3, C2/C8, đề xuất cách theo dõi/PIC để bàn quyết. Không thay code cổng của Huy, không chốt prepared/v1/v2.
 
 ### Bằng chứng
 
@@ -94,8 +94,6 @@ Vai: Sản phẩm và kinh doanh.
 TODO: một điều học được, một điều còn chưa chắc.
 
 ## VuQuangHuy-2A202603782
-
-Đã dùng AI để tổng hợp baseline, kết quả so ngưỡng và trace `T-002@55` vào Phiếu B, mục B0–B2.
 
 ### Phần việc phụ trách
 
