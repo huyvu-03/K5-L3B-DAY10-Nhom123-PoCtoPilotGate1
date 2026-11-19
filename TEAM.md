@@ -79,7 +79,7 @@ Vai: Sản phẩm và kinh doanh.
 - Phiếu A: câu 1.1, 1.5, 1.6 (mục A1, A3, A4, A5): câu tiêu chí "Nếu … thì chúng tôi sẽ …", hai câu ranh giới đầu ra, bốn câu soát, lý do cho `business_ops`, ngày xem lại 2026-11-30.
 - Phiếu B: B3 (câu 2.3, bản đồ dữ liệu và drift REFUND-v3 → v4 ngày 2026-12-01); B6 (hai dòng lăng kính kinh doanh); B7.4 và mục `business` trong `config/operating_gates.json` (trần hoàn 1.000.000đ/ngày, ngân sách 1.200đ/ticket, phạm vi `all`, ROI ≥ 0.5); B8 (quyết định v1 = Tiếp tục).
 - Phiếu C: câu 3.2 (mục C5, specification cho kênh gửi hãng, thẻ S7).
-- TODO: C6 (nhánh kinh doanh của fault tree), C7 nếu cần, C12 (quyết định v2 và ba dòng bắt buộc).
+- Đã hoàn thiện C6 (fault tree, trong đó bổ sung góc kinh doanh), C7 và C12 (quyết định v2 cùng ba dòng bắt buộc).
 - Dùng AI (Claude) để đọc `data/world.json`, `lab10/ops.py` và soạn nháp; mọi ngưỡng đã được bàn rà lại và tự giải thích được.
 
 ### Bằng chứng
@@ -91,7 +91,9 @@ Vai: Sản phẩm và kinh doanh.
 
 ### Exit ticket
 
-TODO: một điều học được, một điều còn chưa chắc.
+Một điều học được: Trước khi quyết định Tiếp tục hay Thu hẹp, cần soát đồng thời cả chất lượng từng ticket, tác hại an toàn và năng lực vận hành/pháp lý.
+
+Một điều còn chưa chắc: Trong pilot thật, cần xác nhận rõ khoảng thời gian và bằng chứng pháp lý để xem xét lại quyết định Cải tiến thêm thành Tiếp tục.
 
 ## VuQuangHuy-2A202603782
 
@@ -106,15 +108,17 @@ Vai: Kỹ sư cổng (chính).
 
 ### Đóng góp cụ thể
 
-TODO: ghi việc đã làm, file đã sửa và các cổng đã viết.
+Chịu trách nhiệm chạy đánh giá mốc `base`, trace lỗi `T-002@55`, hoàn thiện chốt cổng vòng 1 và đối chiếu kết quả với tiêu chí đã ký. Đã sửa `lab10/guards.py` với G0 giữ phiên bản chính sách theo ngày, G1 kiểm quyền hoàn và phê duyệt, G2 kiểm lỗi hãng theo tracking DB, G3 giới hạn payload gửi hãng theo allowlist. Phối hợp Đức ở vòng 2 để duy trì các cổng và đối chứng S7 sau khi sự cố phát sinh.
 
 ### Bằng chứng
 
-TODO: ghi mã commit, mã lần chạy (`runs/<mã>`) và mục phiếu liên quan.
+Commit liên quan: `ce88646` G0–G3, `070b282` trần hoàn theo khách ở G1, `2dcd26e` checkpoint và `895d3fd` ký tiêu chí. Mã lần chạy: `R-base-before-20261119-162624-90f784`, `R-base-after-20261119-164932-27dcad`, `R-base-prepared-20261119-173827-51dc56`; trace `T-002@55`. Phiếu liên quan: A5, B0–B2, B7, B8 và C1–C12.
 
 ### Exit ticket
 
-TODO: ghi một điều học được và một điều còn chưa chắc.
+Một điều học được: Cổng ngoài model cần dùng tracking DB, chính sách hiệu lực, sổ cái và phê duyệt làm nguồn quyết định thay vì tin text trong ticket.
+
+Một điều còn chưa chắc: Allowlist hiện ngăn trường bị cấm trên luồng mock, nhưng cần thêm detector/chính sách kiểm chứng PII nhúng trong giá trị và mọi kênh tích hợp ngoài mock trước khi mở rộng production.
 
 ## DoThiThuHang-2A202603840
 
@@ -144,4 +148,6 @@ Vai: Vận hành và pháp lý (Người 4).
 
 ### Exit ticket
 
-TODO: tự ghi một điều học được và một điều còn chưa chắc.
+Một điều học được: Khi triển khai pilot, báo cáo PASS-VISIBLE không thay thế kiểm chứng vận hành, hợp đồng hãng, lưu-trữ/xóa dữ liệu và các kênh gửi ngoài luồng mock.
+
+Một điều còn chưa chắc: Cần coach hoặc đầu mối pháp lý xác nhận cách ghi nhận checkpoint v1 khi checkpoint được tạo sau thời điểm biết thẻ sự cố, để không diễn giải sai mốc phòng ngừa trước thẻ.

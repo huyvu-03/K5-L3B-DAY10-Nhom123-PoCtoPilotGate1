@@ -275,9 +275,9 @@ Kiểm bằng gì (hàm trong `guards.py`, dòng report nào): nhánh `notify_ca
 
 ### Câu 3.3 · Một giả định về môi trường mà người thiết kế đã ngầm tin, nhưng nhiều khả năng sai ngoài thực tế
 
-Giả định (thứ nằm NGOÀI phần mềm): …
+Giả định (thứ nằm NGOÀI phần mềm): Mọi dữ liệu gửi cho hãng chỉ đi qua tool `notify_carrier`, và danh sách `carrier_notice_fields` luôn đồng bộ với hợp đồng hiện hành của từng hãng.
 
-Vì sao có thể sai: …
+Vì sao có thể sai: Trong production có thể tích hợp trực tiếp, retry hoặc kênh thông báo khác bypass guard; hợp đồng và allowlist có thể đổi hoặc cấu hình sai khi thêm hãng mới.
 
 ---
 
@@ -461,7 +461,7 @@ Cột v1 nằm ở Phiếu B mục B8; không sửa cột đó.
 | Hash chốt cổng vòng 1 | `7f691dab`; checkpoint được tạo 17:38:19, sau khi nhận S7 lúc 16:46:28 |
 | Mã lần chạy dùng làm bằng chứng | S7, base: `R-S7-before-20261119-175938-dd2ceb` · prepared: `R-S7-prepared-20261119-175938-dd2ceb` · after: `R-S7-after-20261119-175939-dd2ceb`; grade: `R-S7-grade-20261119-175937-dd2ceb` |
 | Còn dòng "vượt trần" nào trong report? (hàng chờ, chi phí, ROI, trần tiền, pháp lý) | Không có trần business/operations bị vượt; visible, regression, integrity, criteria và monitor ✅. Kết quả PASS-VISIBLE; test ẩn chưa chạy trên máy. |
-| Kho hoặc hãng có số xấu nhất: ____. Nếu chỉ nhìn phân khúc này, quyết định có đổi không? *(Khối "theo kho và hãng" trong output `lab10.eval` / `lab10.grade`, hoặc mục `by_segment` trong `report.json`.)* | S7 base: HCM và VNX đều 0/15 pass, mỗi bên có 15 lượt PII; prepared/after đều 100% pass, PII 0. Bộ nền có kho `?` tốn 10.359đ/ticket so với 10.000đ làm tay; đây không phải kho đã định danh. |
+| Kho hoặc hãng có số xấu nhất: HCM và VNX. Nếu chỉ nhìn phân khúc này, quyết định có đổi không? *(Khối "theo kho và hãng" trong output `lab10.eval` / `lab10.grade`, hoặc mục `by_segment` trong `report.json`.)* | S7 base: HCM và VNX đều 0/15 pass, mỗi bên có 15 lượt PII; prepared/after đều 100% pass, PII 0. Bộ nền có kho `?` tốn 10.359đ/ticket so với 10.000đ làm tay; đây không phải kho đã định danh. |
 | Quyết định (khoanh một) | **Cải tiến thêm** ✔ |
 | Bằng chứng 1: mã lần chạy + chỉ số bắt buộc nào đạt / chưa | `R-S7-grade-20261119-175937-dd2ceb`: S7 30 lượt PII ở base, 0 ở prepared/after; pass_rate/pass_k 0,25 → 1,0. |
 | Bằng chứng 2 | Bộ nền: hoàn sai 20.000đ và 1 lỗi hãng oan ở base về 0 ở prepared/after; pass_rate/pass_k 1,0; ROI 1,24; 0 ca ùn. |
