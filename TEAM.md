@@ -13,7 +13,7 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; bàn 3 người th
 
 | STT | Họ và tên | MSSV | Vai | Trưởng nhóm |
 | --: | --------- | ---- | --- | :---------: |
-|   1 |           |      |     |             |
+|   1 | Vũ Quang Huy | 2A202603782 | Kỹ sư cổng (chính) |             |
 |   2 | Nguyễn Minh Đức | 2A202603751 | Kỹ sư cổng (phụ) |             |
 |   3 | Phùng Văn Thanh Cao | 2A202603741 | Sản phẩm và kinh doanh |             |
 |   4 |           |      |     |             |
@@ -73,3 +73,27 @@ TODO: mã commit ký tiêu chí, mã lần chạy (`runs/<mã>`), dòng trong ph
 ### Exit ticket
 
 TODO: một điều học được, một điều còn chưa chắc.
+## VuQuangHuy-2A202603782
+
+### Phần việc phụ trách
+
+Vai: Kỹ sư cổng (chính).
+
+- Câu 2.1: chạy đánh giá mốc `base` và đối chiếu kết quả với tiêu chí đã ký.
+- Câu 2.2: trace `T-002` với seed `55`, xác định bước sai đầu tiên và ghi nhận lỗi.
+- Câu 2.6: viết 2–3 cổng phòng ngừa trong `lab10/guards.py`; phối hợp chốt bản vòng 1 trước khi sửa tiếp ở vòng 2.
+- Chạy các lệnh `eval`, `gate` và `trace`; phối hợp với Kỹ sư cổng phụ khi dò sự cố và cập nhật guard vòng 2.
+
+### Đóng góp cụ thể
+
+TODO: ghi việc đã làm, file đã sửa và các cổng đã viết.
+
+### Bằng chứng
+
+TODO: ghi mã commit, mã lần chạy (`runs/<mã>`) và mục phiếu liên quan.
+
+### Exit ticket
+
+TODO: ghi một điều học được và một điều còn chưa chắc.
+
+
