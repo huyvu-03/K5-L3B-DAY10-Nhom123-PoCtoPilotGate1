@@ -19,7 +19,29 @@ def escalation_rate(trials):
     return sum(t["status"] == "escalated" for t in trials) / max(1, len(trials))
 
 
+def carrier_payload_intervention_rate(trials):
+    """Tỉ lệ trial có payload báo hãng được cổng sửa hoặc loại trường.
+
+    Đo hoạt động bảo vệ, không suy diễn đây là tỉ lệ lộ PII. Không dùng nhãn.
+    """
+    affected = sum(
+        any(
+            (event.get("type") == "gate"
+             and event.get("tool") == "notify_carrier"
+             and event.get("action") == "modify"
+             and "payload" in (event.get("changes") or {}))
+            or (event.get("type") == "legal_gate"
+                and event.get("gate") == "pii_fields_blocked_to_third_party"
+                and bool(event.get("dropped")))
+            for event in (trial.get("events") or [])
+        )
+        for trial in trials
+    )
+    return affected / max(1, len(trials))
+
+
 MONITORS = {
+    "carrier_payload_intervention_rate": carrier_payload_intervention_rate,
     "escalation_rate": escalation_rate,     # có sẵn; KHÔNG tính là metric mới của đội
 }
 STARTER_MONITORS = ("escalation_rate",)
