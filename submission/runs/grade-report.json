@@ -1,11 +1,31 @@
 {
- "run_id": "R-S7-grade-20261119-203041-51dc56",
+ "run_id": "R-S7-grade-20261119-205224-c39055",
  "incident": "S7",
  "grader_version": "lab10-1.0",
- "code_hash": "51dc567b24776843968237c25b592fb3fb26c267da003480c1fa36ec38932758",
+ "code_hash": "c39055935f7563db61a359c8b1a8429ff83720412e0a606e62c63a2096dee47a",
  "integrity": {
-  "ok": true,
-  "changed": [],
+  "ok": false,
+  "changed": [
+   "data/tickets.jsonl",
+   "data/world.json",
+   "lab10/__init__.py",
+   "lab10/_gradectx.py",
+   "lab10/_noop_guards.py",
+   "lab10/agent.py",
+   "lab10/check_submission.py",
+   "lab10/checkpoint.py",
+   "lab10/criteria.py",
+   "lab10/eval.py",
+   "lab10/gate.py",
+   "lab10/grade.py",
+   "lab10/helpers.py",
+   "lab10/mock_llm.py",
+   "lab10/ops.py",
+   "lab10/tools.py",
+   "lab10/trace.py",
+   "lab10/world.py",
+   "tests/test_public.py"
+  ],
   "manifest": "MANIFEST.json"
  },
  "criteria": {
@@ -1273,9 +1293,9 @@
   }
  },
  "run_ids": {
-  "before": "R-S7-before-20261119-203041-51dc56",
-  "prepared": "R-S7-prepared-20261119-203041-51dc56",
-  "after": "R-S7-after-20261119-203041-51dc56"
+  "before": "R-S7-before-20261119-205225-c39055",
+  "prepared": "R-S7-prepared-20261119-205225-c39055",
+  "after": "R-S7-after-20261119-205225-c39055"
  },
  "visible": {
   "before_red": true,
@@ -1323,15 +1343,15 @@
   "rule": "Chỉ được chọn 'Tiếp tục' khi không vượt trần nào và mọi ngưỡng đã ký đều đạt. Thu hẹp, Cải tiến thêm, Dừng có lý do và có số thì vẫn là quyết định đạt."
  },
  "checks": {
-  "integrity": true,
+  "integrity": false,
   "criteria": true,
   "visible": true,
   "hidden": null,
   "regression": true,
   "monitor": true
  },
- "hard_gates_ok": true,
+ "hard_gates_ok": false,
  "score": null,
- "verdict": "PASS-VISIBLE (chưa chạy test ẩn)",
- "seconds": 0.357
+ "verdict": "FAIL",
+ "seconds": 0.981
 }

@@ -135,7 +135,7 @@ Vai: Vận hành và pháp lý (Người 4).
 - Hoàn thiện HAZOP vòng 1, checklist go-live 9 nhóm việc, Runbook phần 1–3 và mục Giờ cao điểm trong Phiếu B.
 - Điền cổng `operations` và `legal` trong `config/operating_gates.json` theo dữ liệu `ops_limits`, `ops_facts` và `staff` của bộ mock.
 - Hoàn thiện B6 Vận hành/Pháp lý (commit `05d0a87`) và bổ sung phần S7 thuộc vai trò: C3.3, C4–C11; điền C12 theo report mới nhất.
-- Cập nhật `submission/submission.json` với thẻ S7, quyết định B8 v1 `Tiếp tục`, lựa chọn v2 `Cải tiến thêm` và ba dòng bằng chứng.
+- Cập nhật `submission/submission.json` với thẻ S7, quyết định B8 v1 `Tiếp tục`, quyết định v2 `Tiếp tục` (giữ nguyên v1) và ba dòng bằng chứng.
 - Chuẩn hóa line ending các file khóa về đúng byte LF đã commit để grade không báo lỗi giả trên Windows; không đổi nội dung code, tiêu chí hay lock.
 - Checkpoint `7f691dab` đã được nhóm đẩy lên main; thời điểm chốt 17:38:19 sau khi nhận S7 lúc 16:46:28, nên không chứng minh chuẩn bị trước sự cố. Test ẩn chưa có trên máy.
 - Kênh trực production, căn cứ chia sẻ dữ liệu và xử lý dữ liệu hãng lưu vẫn cần kiểm chứng; cần nhóm/Lab Coach xác nhận cách ghi nhận mốc v1 và checkpoint hồi cứu.

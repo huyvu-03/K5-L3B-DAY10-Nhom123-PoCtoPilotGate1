@@ -1,17 +1,17 @@
-# Tự kiểm tra sự cố S7 · PASS-VISIBLE (chưa chạy test ẩn)
+# Tự kiểm tra sự cố S7 · FAIL
 
 *Đây là kết quả TỰ KIỂM TRA của bàn, không phải điểm. Bài được một team chấm tự động chấm lại sau buổi học.*
 
-- Mã lần chạy: `R-S7-grade-20261119-203041-51dc56` · bàn: `K5-L3B-DAY10-Nhom123-PoCtoPilotGate1` · grader `lab10-1.0` · 0.357s
-- Ba mốc: base `R-S7-before-20261119-203041-51dc56` · prepared `R-S7-prepared-20261119-203041-51dc56` · after `R-S7-after-20261119-203041-51dc56` (report + trace trong runs/)
+- Mã lần chạy: `R-S7-grade-20261119-205224-c39055` · bàn: `K5-L3B-DAY10-Nhom123-PoCtoPilotGate1` · grader `lab10-1.0` · 0.981s
+- Ba mốc: base `R-S7-before-20261119-205225-c39055` · prepared `R-S7-prepared-20261119-205225-c39055` · after `R-S7-after-20261119-205225-c39055` (report + trace trong runs/)
 - Mốc prepared (cổng vòng 1): đã chốt `7f691dab`, còn nguyên
-- Hash code đội (guards + monitors + switches + cổng vận hành): `51dc567b2477`
+- Hash code đội (guards + monitors + switches + cổng vận hành): `c39055935f75`
 - Hash Bản tiêu chí chấp nhận: `6da9d87f1ae5` · đã ký: `6da9d87f1ae5` · KHÔNG ĐỔI
 - Thẻ đang kiểm: `S7` · dòng "Thẻ đã bốc" bàn ghi trong phiếu: S7 · khớp
 
 | Kiểm | Kết quả | Chi tiết |
 |---|---|---|
-| 1 integrity | ✅ | file khoá bị đổi: không |
+| 1 integrity | ❌ | file khoá bị đổi: ['data/tickets.jsonl', 'data/world.json', 'lab10/__init__.py', 'lab10/_gradectx.py', 'lab10/_noop_guards.py', 'lab10/agent.py', 'lab10/check_submission.py', 'lab10/checkpoint.py', 'lab10/criteria.py', 'lab10/eval.py', 'lab10/gate.py', 'lab10/grade.py', 'lab10/helpers.py', 'lab10/mock_llm.py', 'lab10/ops.py', 'lab10/tools.py', 'lab10/trace.py', 'lab10/world.py', 'tests/test_public.py'] |
 | 2 criteria | ✅ | đã ký, còn nguyên |
 | 3 visible | ✅ | base có vấn đề: True; after sạch: True; ticket còn hỏng: không; trần còn vượt: không |
 | 4 hidden | — | máy này không có bài kiểm tra ẩn (team chấm sẽ chạy sau buổi học) |
