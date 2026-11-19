@@ -336,14 +336,14 @@ Thẻ S5 dùng mục này cho một con số kinh doanh: chi phí mỗi ticket t
 
 | | Chỉ số theo dõi mới của bàn |
 |---|---|
-| **Tên trong `MONITORS`** | |
-| **Bước / hành vi được đo** | |
+| **Tên trong `MONITORS`** | `carrier_payload_intervention_rate` |
+| **Bước / hành vi được đo** | Cổng can thiệp payload tại biên gửi `notify_carrier`: guard sửa payload hoặc cổng legal loại trường bị chặn trước khi gửi hãng. |
 | **Thước đo** (một câu, có đơn vị) | `carrier_payload_intervention_rate`: tỉ lệ trial có payload báo hãng được gate sửa hoặc legal_gate loại trường; đơn vị tỉ lệ [0;1], đo hoạt động bảo vệ, không phải tỉ lệ lộ PII. |
 | **Dữ liệu** (trường nào của trial, không có nhãn) | `trials[].events`: type=gate, tool=notify_carrier, action=modify, changes chứa payload; hoặc type=legal_gate, gate=pii_fields_blocked_to_third_party, dropped không rỗng. Không đọc nhãn, ID, nội dung ticket. |
 | **Cách tính** (công thức, mẫu số, cách xử lý ca thiếu dữ liệu) | Đếm mỗi trial tối đa một lần nếu có ít nhất một sự kiện trên, chia tổng số trial (kể cả không gửi hãng); events thiếu/null tính không can thiệp, bộ rỗng trả 0. Xác minh grade cuối `R-S7-grade-20261119-170938-66af5e`: after bộ nền 55/110 = 0,5; S7 35/40 = 0,875, monitor ✅ (C0 dòng 8). |
-| **Khung thời gian / ngưỡng báo động** | |
-| **Điểm mù** (chỉ số này KHÔNG thấy gì) | |
-| Giá trị trên bộ nền · trên thẻ (đọc mục `monitor` của report) | |
+| **Khung thời gian / ngưỡng báo động** | Số hiện tại tính trên toàn bộ trial trong mỗi lần eval/grade. Đề xuất, bàn quyết: theo dõi theo ca trong pilot; ngưỡng cảnh báo và PIC chưa được bàn chốt. Không dùng giá trị bộ thử làm ngưỡng mặc định. |
+| **Điểm mù** (chỉ số này KHÔNG thấy gì) | Không đo trực tiếp số lần lộ PII: sửa payload có thể chỉ sửa số ngày/kiện hoặc bỏ ghi chú không có PII (như S7-05). Không thấy dữ liệu đã gửi trước cổng, kênh khác, quyền đồng ý, hay PII lọt trong giá trị của trường được phép; giá trị 0 cũng có thể do cổng không hoạt động. |
+| Giá trị trên bộ nền · trên thẻ (đọc mục `monitor` của report) | Mốc after: bộ nền **0,5 (55/110)**; S7 **0,875 (35/40)**. Grade `R-S7-grade-20261119-170938-66af5e`, mục monitor: ✅; hash code/config của report còn khớp tại lần rà soát này. |
 
 ---
 

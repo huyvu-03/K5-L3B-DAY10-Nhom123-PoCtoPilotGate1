@@ -42,16 +42,18 @@ Vai: Kỹ sư cổng (phụ).
 - Codex thêm carrier_payload_intervention_rate trong monitors.py, ghi ba ô C8 và kiểm grade; chẩn đoán lệch hash do CRLF chỉ bằng đọc/đổi trong bộ nhớ. Không sửa guards/config/file khoá, không checkpoint, không chốt quyết định thay bàn.
 
 - Trong phiên gộp nhánh, dùng Codex soát khác biệt và xử lý xung đột Phiếu B theo yêu cầu của Đức; giữ B3, B6 kỹ thuật, chẩn đoán S7 và bổ sung tham chiếu lần chạy từ nhánh Hằng.
+- Codex hỗ trợ điền các ô mô tả còn lại của C8 từ monitor/report hiện có; ngưỡng cảnh báo chưa chốt, để bàn quyết. Đức đã đọc và xác nhận nội dung Exit ticket trong cuộc trao đổi trước khi lưu.
 
 ### Bằng chứng
 
 - Mốc đối chiếu: `895d3fd` ký tiêu chí; `372cbba` B7.2/B7.3 có sẵn; `3e0b325` nhận S7; `ce88646` G0–G3 của Huy. Đây là commit tham chiếu, không nhận là đóng góp mới của Đức.
 - T0: `R-base-after-20261119-170212-27dcad` (110/110); S7 base `R-S7-before-20261119-170213-27dcad`, after `R-S7-after-20261119-170214-27dcad` (PII 30 → 0); trace `S7-01@11`, `S7-04@11`, `S7-20@11`, `S7-21@11`, đối chứng `S7-05@11`.
-- Grade cuối sau đồng bộ business của thành viên khác (4838138): `R-S7-grade-20261119-170938-66af5e`: monitor ✅, bộ nền 0,5 vs S7 0,875; visible/regression ✅, integrity/criteria ❌ do CRLF; public tests Ran 13 tests ... OK. Phiếu B B6 KT1–KT7/B7.1; Phiếu C C0–C2/C8. Commit phiên này: tra commit có message `Phieu B tech lens + S7 diagnosis (C0, C1, C2) + monitor + AI-use note` (không tự điền hash trước khi commit).
+- Grade cuối sau đồng bộ business của thành viên khác (4838138): `R-S7-grade-20261119-170938-66af5e`: monitor ✅, bộ nền 0,5 vs S7 0,875; visible/regression ✅, integrity/criteria ❌ do CRLF; public tests Ran 13 tests ... OK. Phiếu B B6 KT1–KT7/B7.1; Phiếu C C0–C2/C8. Commit hoàn thiện phần kỹ thuật của Đức: `cf560cd`; commit gộp nhánh: `7158364`, `9d2b49d`.
 
 ### Exit ticket
 
-TODO: một điều học được, một điều còn chưa chắc.
+- Một điều học được: Tôi học được rằng lọc các trường được phép gửi hãng chặn được cả PII trong ticket và dữ liệu tự lấy từ DB.
+- Một điều còn chưa chắc: Tôi còn chưa chắc cách ghi nhận mốc vòng 1 khi nhóm đã nhận S7 trước khi checkpoint.
 
 ## PhungVanThanhCao-2A202603741
 
