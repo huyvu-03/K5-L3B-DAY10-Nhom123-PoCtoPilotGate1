@@ -75,18 +75,24 @@ Vai: Sản phẩm và kinh doanh.
 
 ### Đóng góp cụ thể
 
-- `config/acceptance_criteria.json`: 5 ngưỡng bắt buộc (`pass_rate_min` 0.96, `pass_k_min` 0.86, ba chỉ số an toàn = 0), `escalation_rate_max` 0.35, `business_ops` (7.000đ/ticket, ROI ≥ 0.5, 0 ca ùn), `stop_condition`, bốn `decision_rule` có thứ tự ưu tiên Dừng > Cải tiến thêm > Thu hẹp > Tiếp tục.
-- Phiếu B: B3, câu 2.3 (bản đồ dữ liệu, drift REFUND-v3 → v4 ngày 2026-12-01).
-- TODO: Phiếu A (câu 1.1, 1.5, 1.6), mục `business` (B7.4), quyết định v1 (B8), câu 3.2 (C5), quyết định v2 (C12).
-
+- `config/acceptance_criteria.json`: 5 ngưỡng bắt buộc (`pass_rate_min` 0.96, `pass_k_min` 0.86, ba chỉ số an toàn = 0), `escalation_rate_max` 0.35, `business_ops` (7.000đ/ticket, ROI ≥ 0.5, 0 ca ùn), `stop_condition`, bốn `decision_rule` có thứ tự ưu tiên Dừng > Cải tiến thêm > Thu hẹp > Tiếp tục; ký tiêu chí trước lần `eval` đầu tiên.
+- Phiếu A: câu 1.1, 1.5, 1.6 (mục A1, A3, A4, A5): câu tiêu chí "Nếu … thì chúng tôi sẽ …", hai câu ranh giới đầu ra, bốn câu soát, lý do cho `business_ops`, ngày xem lại 2026-11-30.
+- Phiếu B: B3 (câu 2.3, bản đồ dữ liệu và drift REFUND-v3 → v4 ngày 2026-12-01); B6 (hai dòng lăng kính kinh doanh); B7.4 và mục `business` trong `config/operating_gates.json` (trần hoàn 1.000.000đ/ngày, ngân sách 1.200đ/ticket, phạm vi `all`, ROI ≥ 0.5); B8 (quyết định v1 = Tiếp tục).
+- Phiếu C: câu 3.2 (mục C5, specification cho kênh gửi hãng, thẻ S7).
+- TODO: C6 (nhánh kinh doanh của fault tree), C7 nếu cần, C12 (quyết định v2 và ba dòng bắt buộc).
+- Dùng AI (Claude) để đọc `data/world.json`, `lab10/ops.py` và soạn nháp; mọi ngưỡng đã được bàn rà lại và tự giải thích được.
 
 ### Bằng chứng
 
-TODO: mã commit ký tiêu chí, mã lần chạy (`runs/<mã>`), dòng trong phiếu.
+- Commit ký tiêu chí: `895d3fd` (2026-11-19T16:21), hash tiêu chí `6da9d87f`, trước lần `eval` đầu tiên (16:26).
+- Commit liên quan: `4838138` (B7.4, `business`), `6e2f3a7` (B8, quyết định v1), `f1ea39f` (A5).
+- Mã lần chạy: base `R-base-before-20261119-162624-90f784`; prepared `R-base-prepared-20261119-173827-51dc56` (hash chốt vòng 1 `7f691dab`).
+- Dòng trong phiếu: A1 (câu 1.1), A3, A4, A5; B3, B6 (dòng kinh doanh), B7.4, B8; C5 (câu 3.2).
 
 ### Exit ticket
 
 TODO: một điều học được, một điều còn chưa chắc.
+
 ## VuQuangHuy-2A202603782
 
 ### Phần việc phụ trách

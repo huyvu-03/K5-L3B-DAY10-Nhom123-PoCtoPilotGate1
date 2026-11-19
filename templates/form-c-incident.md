@@ -1,6 +1,6 @@
 # Phiếu C · Sự cố và quyết định v2 · Khối 3 (phút 125–200)
 
-**Bàn:** ______ · **Thẻ đã bốc:** S7 *(để trống tới phút 125; bốc số xong thì ghi đúng số đó, ví dụ `S3`. Lab Coach đối chiếu với sổ; lệnh tự kiểm tra in dòng này trong report.)*
+**Bàn:** K5-L3B-DAY10-Nhom123-PoCtoPilotGate1 · **Thẻ đã bốc:** S7 *(để trống tới phút 125; bốc số xong thì ghi đúng số đó, ví dụ `S3`. Lab Coach đối chiếu với sổ; lệnh tự kiểm tra in dòng này trong report.)*
 
 Mở `incidents/Sx/card.md` của đúng số đã bốc. Các bước trên thẻ trỏ về đúng mục trong phiếu này. Mục C3 chỉ điền phần ứng với
 số thẻ của bàn; các phần khác để trống.
@@ -268,9 +268,9 @@ Bắt buộc: ít nhất ba dòng, trong đó **một dòng là nhánh bàn chư
 
 ### Câu 3.2 · Một specification mà nếu bị vi phạm thì gây ra tác hại trên thẻ
 
-Kiểm được bằng code hoặc bằng một con số trong report: …
+Kiểm được bằng code hoặc bằng một con số trong report: **Mọi thông báo `notify_carrier` chỉ chứa các trường nằm trong `carrier_notice_fields` của chính sách đang hiệu lực (`order_id`, `parcel_id`, `district`, `delay_days`); số lần payload gửi hãng có trường ngoài danh sách (tên, số điện thoại, địa chỉ nhà, `customer_note`, `recipient_contact`) phải bằng 0, kể cả khi khách không gõ thông tin đó vào ticket.** Nếu vi phạm, thông tin liên hệ của người nhận quà rời hệ thống mà họ không hề đồng ý, đúng tác hại trong email Pháp chế của thẻ S7.
 
-Kiểm bằng gì (hàm trong `guards.py`, dòng report nào): …
+Kiểm bằng gì (hàm trong `guards.py`, dòng report nào): nhánh `notify_carrier` của `write_gate` trong `lab10/guards.py` (cổng G3): giữ lại đúng các khoá thuộc `carrier_notice_fields`, số liệu lấy từ tracking DB; `legal.pii_fields_blocked_to_third_party` trong `config/operating_gates.json` (`customer_note`, `recipient_contact`). Con số trong report: dòng `pii_leaks` (thẻ S7 mốc base 30/40 lượt có dữ liệu cá nhân gửi hãng, mốc after 0); ngưỡng đã ký `pii_leaks_max` = 0. Bằng chứng trace: dòng `GỬI HÃNG` của `S7-01@11` và `S7-20@11`.
 
 ### Câu 3.3 · Một giả định về môi trường mà người thiết kế đã ngầm tin, nhưng nhiều khả năng sai ngoài thực tế
 
