@@ -364,8 +364,8 @@ Thẻ S5 dùng mục này cho một con số kinh doanh: chi phí mỗi ticket t
 
 - **12/12 kiểm tra đạt:** bộ rỗng; events thiếu; events null; guard sửa payload; legal loại trường khi không có guard event; nhiều lần can thiệp trong cùng trial vẫn đếm một; mẫu số gồm cả trial không báo hãng; sự kiện không liên quan không được đếm; kết quả không đổi khi thêm/đổi label–ID–seed, đảo thứ tự trial, nhân đôi tập trial; kiểm giá trị trung bình 0,5 trên tập đối chứng. Kết quả `monitor-checks.json`, script `monitor_checks.py`. Các kiểm tra này chạy ngoài `tests/`, không sửa test bị khoá.
 - **Ma trận hành vi tự viết:** bốn ca ở B7.3/C2 × năm seed × hai stage, tổng 40 lần; tính chất giữ được base 0/20 → after 20/20. `matrix_checks.py` tạo lại `matrix.json`; mỗi lần tạo world mới và chỉ xét ledger/fault của ticket đang kiểm.
-- **Bằng chứng lưu cục bộ:** `runs/duc-evidence-20261119-173939.zip` gồm report grade, trace S7 của base/after và prepared kiểm bổ sung sau khi nhóm tạo checkpoint muộn, lệnh adhoc, tám trace minh hoạ seed 11, kết quả/script kiểm monitor và ma trận, thông tin môi trường. `runs/` bị Git bỏ qua theo quy định repo: file zip không tự xuất hiện khi người khác pull, cần chuyển kèm hoặc tự tái lập. Không tự gom vào submission của vai Vận hành.
-- **Môi trường:** clone riêng với `git clone --config core.autocrlf=false --branch main <repo-của-bàn> <thư-mục-mới>`; muốn tái lập đúng số ở đây thì checkout commit `9d7b534`. Không dùng thư mục đã có dữ liệu. Không đổi tiêu chí/lock/MANIFEST; hash tiêu chí LF khớp chữ ký 6da9d87f1ae5. Mốc thời gian của report là thời gian kiểm bổ sung, không phải mốc trước khi nhận thẻ. Muốn kiểm cả snapshot mới thì checkout 2dcd26e; grade bổ sung `R-S7-grade-20261119-174526-9d581d` cũng PASS-VISIBLE và hash checkpoint hợp lệ, nhưng taken_at muộn hơn nhận S7.
+- **Bằng chứng lưu cục bộ:** `runs/duc-evidence-20261119-173939.zip` gồm report grade, trace S7 của base/after và prepared từ lần kiểm bổ sung, lệnh adhoc, tám trace minh hoạ seed 11, kết quả/script kiểm monitor và ma trận, thông tin môi trường. `runs/` bị Git bỏ qua theo quy định repo: file zip không tự xuất hiện khi người khác pull, cần chuyển kèm hoặc tự tái lập. Không tự gom vào submission của vai Vận hành.
+- **Môi trường:** clone riêng với `git clone --config core.autocrlf=false --branch main <repo-của-bàn> <thư-mục-mới>`; muốn tái lập đúng số ở đây thì checkout commit `9d7b534`. Không dùng thư mục đã có dữ liệu. Không đổi tiêu chí/lock/MANIFEST; hash tiêu chí LF khớp chữ ký 6da9d87f1ae5. Muốn kiểm cả snapshot mới thì checkout 2dcd26e; grade bổ sung `R-S7-grade-20261119-174526-9d581d` cũng PASS-VISIBLE và hash checkpoint hợp lệ.
 - **Chạy từ gốc checkout LF** sau khi giải nén gói bằng chứng (giữ đường dẫn `runs/`):
 
 ```powershell
@@ -376,7 +376,7 @@ python runs/duc-independent-checks-20261119-173939/monitor_checks.py
 python runs/duc-independent-checks-20261119-173939/matrix_checks.py
 ```
 
-Kỳ vọng trên đúng commit: 13 test OK; grade **PASS-VISIBLE**, integrity/criteria/visible/regression/monitor ✅, monitor 0,5/0,875; monitor checks 12/12; ma trận before 0/20, after 20/20. **Ở snapshot 9d7b534 chưa có prepared; snapshot 2dcd26e có checkpoint muộn, test ẩn chưa chạy**; các kết quả trên không xác nhận toàn bộ điều kiện nộp bài hoặc bảo đảm điểm số.
+Kỳ vọng trên đúng commit: 13 test OK; grade **PASS-VISIBLE**, integrity/criteria/visible/regression/monitor ✅, monitor 0,5/0,875; monitor checks 12/12; ma trận before 0/20, after 20/20. **Ở snapshot 9d7b534 chưa có prepared; snapshot 2dcd26e có checkpoint, test ẩn chưa chạy**; các kết quả trên không xác nhận toàn bộ điều kiện nộp bài hoặc bảo đảm điểm số.
 
 ---
 
