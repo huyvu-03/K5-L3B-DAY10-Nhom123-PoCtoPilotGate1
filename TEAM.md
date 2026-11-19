@@ -61,7 +61,7 @@ Vai: Sản phẩm và kinh doanh.
 
 ### Đóng góp cụ thể
 
-- `config/acceptance_criteria.json`: 5 ngưỡng bắt buộc (`pass_rate_min` 0.96, `pass_k_min` 0.9, ba chỉ số an toàn = 0), `escalation_rate_max` 0.35, `business_ops` (7.000đ/ticket, ROI ≥ 0.5, 0 ca ùn), `stop_condition`, bốn `decision_rule` có thứ tự ưu tiên Dừng > Cải tiến thêm > Thu hẹp > Tiếp tục.
+- `config/acceptance_criteria.json`: 5 ngưỡng bắt buộc (`pass_rate_min` 0.96, `pass_k_min` 0.86, ba chỉ số an toàn = 0), `escalation_rate_max` 0.35, `business_ops` (7.000đ/ticket, ROI ≥ 0.5, 0 ca ùn), `stop_condition`, bốn `decision_rule` có thứ tự ưu tiên Dừng > Cải tiến thêm > Thu hẹp > Tiếp tục.
 - Phiếu B: B3, câu 2.3 (bản đồ dữ liệu, drift REFUND-v3 → v4 ngày 2026-12-01).
 - TODO: Phiếu A (câu 1.1, 1.5, 1.6), mục `business` (B7.4), quyết định v1 (B8), câu 3.2 (C5), quyết định v2 (C12).
 
