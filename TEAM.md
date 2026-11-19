@@ -15,7 +15,7 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; bàn 3 người th
 | --: | --------- | ---- | --- | :---------: |
 |   1 | Vũ Quang Huy | 2A202603782 | Kỹ sư cổng (chính) |             |
 |   2 | Nguyễn Minh Đức | 2A202603751 | Kỹ sư cổng (phụ) |             |
-|   3 |           |      |     |             |
+|   3 | Phùng Văn Thanh Cao | 2A202603741 | Sản phẩm và kinh doanh |             |
 |   4 |           |      |     |             |
 
 Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, khớp bảng trên.
@@ -47,6 +47,32 @@ TODO: mã commit, mã lần chạy (`runs/<mã>`), dòng trong phiếu.
 
 TODO: một điều học được, một điều còn chưa chắc.
 
+## PhungVanThanhCao-2A202603741
+
+### Phần việc phụ trách
+
+Vai: Sản phẩm và kinh doanh.
+
+- Câu 1.1, 1.6 (Phiếu A, mục A1, A4, A5): mục tiêu cấp hệ thống, Bản tiêu chí "Nếu … thì chúng tôi sẽ …", bốn câu soát, hai câu ranh giới đầu ra; ký tiêu chí cùng trưởng nhóm.
+- Câu 2.3 (Phiếu B, mục B3): bản đồ dữ liệu và một ví dụ drift.
+- Câu 2.9 (Phiếu B, mục B7.4): đặt cổng kinh doanh trong `business` (`daily_refund_cap_vnd`, `cost_budget_per_ticket_vnd`, `pilot_scope`, `roi_min`), mỗi số kèm một câu lý do.
+- Quyết định Gate 1 v1 (Phiếu B, mục B8) và v2 (Phiếu C, mục C12, ba dòng bắt buộc); câu 3.2 (Phiếu C, mục C5: specification).
+- File: `config/acceptance_criteria.json`, `config/operating_gates.json` (mục `business`).
+
+### Đóng góp cụ thể
+
+- `config/acceptance_criteria.json`: 5 ngưỡng bắt buộc (`pass_rate_min` 0.96, `pass_k_min` 0.9, ba chỉ số an toàn = 0), `escalation_rate_max` 0.35, `business_ops` (7.000đ/ticket, ROI ≥ 0.5, 0 ca ùn), `stop_condition`, bốn `decision_rule` có thứ tự ưu tiên Dừng > Cải tiến thêm > Thu hẹp > Tiếp tục.
+- Phiếu B: B3, câu 2.3 (bản đồ dữ liệu, drift REFUND-v3 → v4 ngày 2026-12-01).
+- TODO: Phiếu A (câu 1.1, 1.5, 1.6), mục `business` (B7.4), quyết định v1 (B8), câu 3.2 (C5), quyết định v2 (C12).
+
+
+### Bằng chứng
+
+TODO: mã commit ký tiêu chí, mã lần chạy (`runs/<mã>`), dòng trong phiếu.
+
+### Exit ticket
+
+TODO: một điều học được, một điều còn chưa chắc.
 ## VuQuangHuy-2A202603782
 
 ### Phần việc phụ trách
