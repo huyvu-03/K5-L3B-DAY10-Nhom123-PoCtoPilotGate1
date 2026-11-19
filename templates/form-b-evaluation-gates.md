@@ -322,10 +322,10 @@ Mỗi con số kèm một câu lý do, lấy từ `data/world.json` → `ops_lim
 
 | Khoá | Giá trị bàn đặt | Lý do (một câu, có số) |
 |---|---|---|
-| `business.daily_refund_cap_vnd` | | |
-| `business.cost_budget_per_ticket_vnd` | | |
-| `business.pilot_scope` (all / warehouse / percent) | | |
-| `business.roi_min` | | |
+| `business.daily_refund_cap_vnd` | `1000000` | Finance cho tối đa 2.000.000đ hoàn tự động mỗi ngày (`ops_limits.daily_auto_refund_budget_vnd`). Lần chạy base cho thấy ngày tệ nhất tự hoàn 155.000đ, nên trần 1.000.000đ bằng 50% ngân sách và ≈ 6,5 lần mức đã đo: đủ chỗ cho lượng việc tăng gấp vài lần mà không chặn ca đúng. Khoản vượt trần chuyển người duyệt (NV-HANH), không bị mất |
+| `business.cost_budget_per_ticket_vnd` | `1200` | Trần cứng của Finance là 1.500đ tiền LLM mỗi ticket (`ops_limits.max_llm_cost_per_ticket_vnd`). Theo `ops_facts.llm_cost` và `lab10/agent.py`: nền 200 + đọc 150 + 1đ/4 ký tự + soát chính sách 200 + xác nhận 100 + ghi chú giải thích 100; ticket đắt nhất bộ nền ước tính ≈ 771đ, cộng một lần thử lại soát chính sách (+200đ) ≈ 971đ. Đặt 1.200đ chừa ~25% cho ticket dài hoặc ghi chú đơn mà vẫn thấp hơn trần 1.500đ; ticket nào sắp vượt thì chuyển người đọc |
+| `business.pilot_scope` (all / warehouse / percent) | `{"mode": "all", "warehouses": [], "percent": 100}` | Chọn `all` ở vòng 1 vì bộ nền đã đo ở toàn bộ 5 kho: sau cổng vòng 1, 110/110 lượt đúng, 0 hoàn oan, 0 lỗi hãng oan, ROI 1,24 (ngưỡng 0,5). Chưa có số đo cho phương án chỉ 2 kho, và phí giữ chỗ cố định 30.000đ/người/ca chia cho ít ticket hơn sẽ làm ROI giảm. Thu hẹp (cắt kho nào, còn bao nhiêu phần trăm) là công cụ dành cho quyết định v1/v2 khi report còn dòng vượt trần hoặc ngưỡng chưa đạt, không đặt trước khi có bằng chứng |
+| `business.roi_min` | `0.5` | Khớp `business_ops.roi_min` đã ký (0,5). ROI = tiết kiệm ròng / chi phí trợ lý (LLM + 10.000đ mỗi ca duyệt + 30.000đ giữ chỗ mỗi người trực) theo `lab10/ops.py`; mốc base đo được 1,34 và sau cổng vòng 1 là 1,24. Report báo "vượt trần" nếu ROI thấp hơn 0,5; không chặn thao tác nào |
 
 ### B7.5 · Câu 2.10 · Cổng con người, vận hành, pháp lý + Runbook phần 1–3
 
